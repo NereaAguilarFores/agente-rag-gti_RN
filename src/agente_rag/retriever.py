@@ -60,10 +60,19 @@ def _open_collection() -> chromadb.api.models.Collection.Collection:
     return client.get_collection(SETTINGS.collection_name)
 
 
-def retrieve(question: str, *, k: int = 5) -> list[RetrievedChunk]:
+def retrieve(question: str, *, k: int = 10) -> list[RetrievedChunk]:
     """Top-k semántico. ``score = 1 - distance`` para que más alto = mejor."""
     col = _open_collection()
-    q_emb = embed(question)
+    
+    query = question
+    
+    if "RESIS" in question.upper():
+        query += " residencias mayores abuelitos"
+    if "COLES" in question.upper():
+        query += " refuerzo escolar niños colegios"
+        
+    q_emb = embed(query)
+    
     res = col.query(query_embeddings=[q_emb], n_results=k)
     out: list[RetrievedChunk] = []
     for i in range(len(res["ids"][0])):

@@ -6,8 +6,8 @@
 
 | Apellidos, Nombre | DNI | Correo UPV | Grado/Curso |
 |---|---|---|---|
-| Apellido1 Apellido2, Nombre | 12345678X | usuario@alumni.upv.es | GTI / 3º |
-| Apellido1 Apellido2, Nombre | 12345678X | usuario@alumni.upv.es | GTI / 3º |
+| Aguilar Forés, Nerea | 54020406F | nagufor@upv.edu.es | GTI / 3º |
+| Espinoza Cervera, Judit | 12345678X | usuario@alumni.upv.es | GTI / 3º |
 
 ## Reparto de trabajo
 

@@ -1,52 +1,51 @@
 [
   {
     "id": "q1",
-    "categoria": "asignaturas",
-    "pregunta": "¿Hay alguna asignatura sobre desarrollo de videojuegos en GTI?",
-    "fuentes_esperadas": ["3_tercero.txt", "4_cuarto.txt"]
+    "categoria": "general",
+    "pregunta": "¿Qué es DNI?",
+    "fuentes_esperadas": ["08_preguntas_basicas.txt", "04_filosofia_dni.txt"]
   },
   {
     "id": "q2",
-    "categoria": "asignaturas",
-    "pregunta": "¿En qué consiste la asignatura de Diseño de Interfaces y Experiencia de Usuario?",
-    "fuentes_esperadas": ["3_tercero.txt"]
+    "categoria": "desayunos",
+    "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+    "fuentes_esperadas": ["01_faq_dni.txt", "07_desayunos_logistica.txt"]
   },
   {
     "id": "q3",
-    "categoria": "asignaturas",
-    "pregunta": "¿Qué se da en la asignatura de Tratamiento Digital de Imagen?",
-    "fuentes_esperadas": ["3_tercero.txt"]
+    "categoria": "comparativa",
+    "pregunta": "¿En qué se diferencian RESIS y COLES?",
+    "fuentes_esperadas": ["06_coles_refuerzo.txt", "16_resis_49_preguntas.txt", "11_horarios_ubicaciones.txt"]
   },
   {
     "id": "q4",
-    "categoria": "primer_curso",
-    "pregunta": "¿Qué asignaturas de primero introducen a la programación?",
-    "fuentes_esperadas": ["1_primero.txt"]
+    "categoria": "coles",
+    "pregunta": "¿Qué se hace en el refuerzo escolar?",
+    "fuentes_esperadas": ["06_coles_refuerzo.txt", "01_faq_dni.txt"]
   },
   {
     "id": "q5",
-    "categoria": "consejo",
-    "pregunta": "Mi hijo quiere ser diseñador de videojuegos, ¿le sirve este grado?",
-    "fuentes_esperadas": ["3_tercero.txt", "4_cuarto.txt"]
+    "categoria": "resis",
+    "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+    "fuentes_esperadas": ["11_horarios_ubicaciones.txt", "16_resis_49_preguntas.txt"]
   },
   {
     "id": "q6",
-    "categoria": "trampa_retrieval",
-    "pregunta": "¿Qué se da en la asignatura de Inteligencia Artificial?",
-    "fuentes_esperadas": ["3_tercero.txt"],
-    "nota": "Caso conocido: el retrieval semántico se distrae con 'Visión Artificial'. Documentado en el Colab §10."
+    "categoria": "desayunos",
+    "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+    "fuentes_esperadas": ["15_desayunos_100_preguntas.txt"]
   },
   {
     "id": "q7",
     "categoria": "fuera_de_ambito",
-    "pregunta": "¿Hay alguna asignatura sobre cocina creativa?",
+    "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
     "fuentes_esperadas": [],
     "respuesta_esperada": "No tengo esa información en mis fuentes"
   },
   {
     "id": "q8",
     "categoria": "fuera_de_ambito",
-    "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+    "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
     "fuentes_esperadas": [],
     "respuesta_esperada": "No tengo esa información en mis fuentes"
   }
