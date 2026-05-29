@@ -25,7 +25,6 @@ from openai import OpenAI
 
 from .config import SETTINGS
 
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
