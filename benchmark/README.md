@@ -3,6 +3,8 @@
 Set reducido de **8 preguntas** para validar el agente sobre el corpus
 GTI Orienta. Cubre cuatro categorías:
 
+Se ha realizado un benchmark comparativo con cuatro modelos (llama3.2:3b, qwen2.5:3b, poligpt y qwen) registrando latencia, tokens y calidad de respuesta.
+
 | Categoría | Cuántas | Para qué |
 |---|---|---|
 | `asignaturas` | 3 | Pregunta directa por temario. Retrieval semántico debería acertar. |
@@ -38,3 +40,16 @@ respuesta, chunks recuperados, fuentes y métricas (`prompt_tokens`,
 Para banda 8 podéis automatizar (1) y (3) con
 [RAGAs](https://docs.ragas.io/) — `faithfulness` y `answer_relevancy` son
 los dos más útiles para un set tan pequeño.
+
+## Resultados obtenidos
+
+Los resultados completos del benchmark pueden consultarse en:
+
+- benchmark.md
+- benchmark.json
+
+Se evaluaron los modelos:
+- llama3.2:3b
+- qwen2.5:3b
+- poligpt
+- qwen
