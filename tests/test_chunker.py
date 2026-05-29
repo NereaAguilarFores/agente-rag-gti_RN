@@ -9,17 +9,18 @@ from agente_rag.chunker import Chunk, load_corpus, split_documents
 CORPUS = Path(__file__).resolve().parents[1] / "corpus"
 
 
-def test_load_corpus_returns_four_docs():
+def test_load_corpus_returns_dni_docs():
     docs = load_corpus(CORPUS)
-    assert len(docs) == 4
-    assert all("name" in d and "text" in d for d in docs)
-    assert {d["name"] for d in docs} == {
-        "1_primero.txt",
-        "2_segundo.txt",
-        "3_tercero.txt",
-        "4_cuarto.txt",
-    }
 
+    assert len(docs) == 16
+    assert all("name" in d and "text" in d for d in docs)
+
+    names = {d["name"] for d in docs}
+
+    assert "01_faq_dni.txt" in names
+    assert "04_filosofia_dni.txt" in names
+    assert "06_coles_refuerzo.txt" in names
+    assert "16_resis_49_preguntas.txt" in names
 
 def test_load_corpus_missing_dir(tmp_path):
     with pytest.raises(FileNotFoundError):

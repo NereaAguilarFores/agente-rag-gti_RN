@@ -7,11 +7,10 @@ Si crece, valorad migrar a sentence-transformers en local.
 
 from __future__ import annotations
 
-import urllib3
 import requests
+import urllib3
 
 from .config import SETTINGS
-
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

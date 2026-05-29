@@ -5,27 +5,25 @@
 
 ## ¿Qué herramientas habéis usado?
 
-- [ ] ChatGPT (GPT-4 / GPT-5 / o3 / ...)
+- [X] ChatGPT (GPT-4 / GPT-5 / o3 / ...)
 - [ ] Claude (Sonnet / Opus / ...)
 - [ ] GitHub Copilot
 - [ ] Cursor / Windsurf / IDE con asistente integrado
 - [ ] Gemini
-- [ ] Ollama local con modelos abiertos
+- [X] Ollama local con modelos abiertos
 - [ ] Otras: ...
 
 ## ¿En qué partes os ha ayudado?
 
 Sed específicos. Ejemplos de declaración honesta:
 
-- **Boilerplate y refactors**: la estructura de `src/agente_rag/` y los
-  type hints los redactó Claude a partir de un primer borrador nuestro.
-- **Debugging**: cuando ChromaDB daba un error de embeddings con dimensión
-  inconsistente, ChatGPT nos guio al fix.
-- **Docs**: este `AI_USAGE.md` lo redactó Copilot a partir de la plantilla
-  del repo-ejemplo. Lo revisamos línea a línea.
-- **Tests**: los `test_*.py` los escribimos a mano, sin asistente.
-- **NO usado para**: el informe de la práctica (lo redactamos íntegramente
-  nosotros), las decisiones arquitecturales, ni el análisis del benchmark.
+- **Instalación y ejecución**: ChatGPT nos guió en la instalación de dependencias, Ollama y modelos locales.
+- **Comprensión del proyecto**: ChatGPT nos ayudó a entender la estructura general del sistema RAG: `chunker`, `retriever`, `generator`, `prompts` y `pipeline`.
+- **Debugging**: ChatGPT nos ayudó a interpretar errores durante la ejecución y a localizar posibles problemas de configuración.
+- **Documentación**: ChatGPT nos ayudó a redactar partes iniciales de la documentación, revisadas posteriormente por nosotras.
+- **Ollama local**: se ha usado como servidor local de modelos para ejecutar el agente, tal como pide la práctica
+
+## NO usado para
 
 ## Compromiso
 
@@ -33,4 +31,4 @@ Hemos leído y entendido todo el código que hemos entregado. En la presentació
 oral en directo seremos capaces de defender cualquier línea que el profesor
 nos señale. Si no podemos defender una decisión, asumimos que la nota baja.
 
-Firma (digital, escribiendo el nombre): __________________________
+Firma (digital, escribiendo el nombre): Nerea Aguilar Forés y

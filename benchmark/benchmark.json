@@ -1,0 +1,26 @@
+{
+  "modelos_evaluados": [
+    {
+      "alias": "llama3.2:3b",
+      "servidor": "ollama_local",
+      "resultado": "runs/run_20260519_044702.json"
+    },
+    {
+      "alias": "qwen2.5:3b",
+      "servidor": "ollama_local",
+      "resultado": "runs/run_20260529_200230.json"
+    },
+    {
+      "alias": "poligpt",
+      "servidor": "poligpt",
+      "resultado": "runs/run_20260529_213841.json"
+    },
+    {
+      "alias": "qwen",
+      "servidor": "poligpt",
+      "resultado": "runs/run_20260529_215142.json"
+    }
+  ],
+  "num_modelos": 4,
+  "num_preguntas": 8
+}
