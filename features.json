@@ -9,7 +9,7 @@
     "banda5_pipeline_no_inventa": true,
     "banda6_cita_archivo": true,
     "banda7_benchmark_4_modelos": true,
-    "banda8_ragas_metricas_propias": false,
+    "banda8_ragas_metricas_propias": true,
     "banda10_hexagonal": false
   },
 
