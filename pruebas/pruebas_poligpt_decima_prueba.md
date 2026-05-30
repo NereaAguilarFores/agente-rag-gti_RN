@@ -23,7 +23,7 @@ Observaciones:
 
 Las preguntas fuera de ámbito fueron rechazadas correctamente utilizando la frase de rechazo configurada.
 La comparación RESIS vs COLES mejoró notablemente respecto a algunos modelos locales.
-Se detectó un fallo en la pregunta "¿Qué es DNI?", donde el modelo rechazó la respuesta pese a recuperar fragmentos relevantes.
+Se detectó un fallo en la pregunta "¿Qué es DNI", donde el modelo rechazó la respuesta pese a recuperar fragmentos relevantes.
 Se obtuvieron métricas de latencia y tokens para todas las preguntas.
 
 Salida completa

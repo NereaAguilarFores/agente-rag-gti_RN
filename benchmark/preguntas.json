@@ -3,37 +3,55 @@
     "id": "q1",
     "categoria": "general",
     "pregunta": "¿Qué es DNI?",
-    "fuentes_esperadas": ["08_preguntas_basicas.txt", "04_filosofia_dni.txt"]
+    "fuentes_esperadas": [
+      "08_preguntas_basicas.txt",
+      "04_filosofia_dni.txt"
+    ]
   },
   {
     "id": "q2",
     "categoria": "desayunos",
     "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
-    "fuentes_esperadas": ["01_faq_dni.txt", "07_desayunos_logistica.txt"]
+    "fuentes_esperadas": [
+      "01_faq_dni.txt",
+      "07_desayunos_logistica.txt"
+    ]
   },
   {
     "id": "q3",
     "categoria": "comparativa",
     "pregunta": "¿En qué se diferencian RESIS y COLES?",
-    "fuentes_esperadas": ["06_coles_refuerzo.txt", "16_resis_49_preguntas.txt", "11_horarios_ubicaciones.txt"]
+    "fuentes_esperadas": [
+      "06_coles_refuerzo.txt",
+      "16_resis_49_preguntas.txt",
+      "11_horarios_ubicaciones.txt"
+    ]
   },
   {
     "id": "q4",
     "categoria": "coles",
     "pregunta": "¿Qué se hace en el refuerzo escolar?",
-    "fuentes_esperadas": ["06_coles_refuerzo.txt", "01_faq_dni.txt"]
+    "fuentes_esperadas": [
+      "06_coles_refuerzo.txt",
+      "01_faq_dni.txt"
+    ]
   },
   {
     "id": "q5",
     "categoria": "resis",
     "pregunta": "¿Cuándo son las actividades con los abuelitos?",
-    "fuentes_esperadas": ["11_horarios_ubicaciones.txt", "16_resis_49_preguntas.txt"]
+    "fuentes_esperadas": [
+      "11_horarios_ubicaciones.txt",
+      "16_resis_49_preguntas.txt"
+    ]
   },
   {
     "id": "q6",
     "categoria": "desayunos",
     "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
-    "fuentes_esperadas": ["15_desayunos_100_preguntas.txt"]
+    "fuentes_esperadas": [
+      "15_desayunos_100_preguntas.txt"
+    ]
   },
   {
     "id": "q7",
@@ -47,6 +65,6 @@
     "categoria": "fuera_de_ambito",
     "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
     "fuentes_esperadas": [],
-    "respuesta_esperada": "No tengo esa información en mis fuentes"
+    "respuesta_esperada": "No tengo esa informacion en mis fuentes"
   }
 ]

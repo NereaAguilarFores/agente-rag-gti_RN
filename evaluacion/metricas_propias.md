@@ -1,6 +1,6 @@
 # Métricas propias
 
-Ademas de las cuatro metricas RAGAs, se definen dos metricas propias adaptadas a esta practica.
+Además de las cuatro métricas RAGAs, se definen dos métricas propias adaptadas a esta práctica.
 
 ## 1. Tasa de rechazo correcto fuera de ámbito
 
@@ -8,7 +8,7 @@ Ademas de las cuatro metricas RAGAs, se definen dos metricas propias adaptadas a
 
 Mide si el agente rechaza correctamente las preguntas cuya respuesta no aparece en el corpus.
 
-Formula:
+Fórmula:
 
 ```text
 tasa_rechazo_correcto = preguntas_fuera_de_ambito_rechazadas_correctamente / total_preguntas_fuera_de_ambito
@@ -31,9 +31,9 @@ En el benchmark hay 2 preguntas fuera de ámbito:
 - `q7`: "¿Cuánto cuesta el alquiler en Valencia?"
 - `q8`: "¿Cuál es la mejor universidad para estudiar medicina?"
 
-Segun el benchmark documentado, los cuatro modelos rechazaron correctamente ambas preguntas.
+Según el benchmark documentado, los cuatro modelos rechazaron correctamente ambas preguntas.
 
-| Modelo | Rechazos correctos | Total fuera de ambito | Tasa |
+| Modelo | Rechazos correctos | Total fuera de ámbito | Tasa |
 |---|---:|---:|---:|
 | `llama3.2:3b` | 2 | 2 | 1.00 |
 | `qwen2.5:3b` | 2 | 2 | 1.00 |
@@ -48,7 +48,7 @@ Promedio global: **1.00**.
 
 Mide si el sistema recupera o cita los documentos esperados para cada pregunta del benchmark.
 
-Formula:
+Fórmula:
 
 ```text
 cobertura_fuentes = fuentes_esperadas_encontradas / total_fuentes_esperadas
@@ -58,7 +58,7 @@ Para preguntas fuera de ámbito no se computa cobertura de fuentes, porque la re
 
 ### Justificación
 
-La practica no solo pide responder, sino citar fuentes. Esta metrica evalua la calidad del retrieval y la trazabilidad documental.
+La práctica no solo pide responder, sino citar fuentes. Esta métrica evalúa la calidad del retrieval y la trazabilidad documental.
 
 ### Resultado consolidado
 

@@ -1,4 +1,4 @@
-# Grupo de practicas
+# Grupo de prácticas
 
 ## Integrantes
 
@@ -12,14 +12,14 @@
 
 | Integrante | Trabajo realizado |
 |---|---|
-| Nerea Aguilar Fores | Desarrollo y pruebas del pipeline RAG; ajustes de prompt; benchmark con modelos locales y PoliGPT; analisis de resultados; revision de calidad de respuestas. |
-| Judit Espinoza Cervera | Revision documental; limpieza de referencias de plantilla; README; AI_USAGE; GRUPO; informe; organizacion de pruebas y benchmark para la entrega. |
+| Nerea Aguilar Fores | Desarrollo y pruebas del pipeline RAG; ajustes de prompt; benchmark con modelos locales y PoliGPT; análisis de resultados; revisión de calidad de respuestas. |
+| Judit Espinoza Cervera | Revisión documental; limpieza de referencias de plantilla; README; AI_USAGE; GRUPO; informe; organización de pruebas y benchmark para la entrega. |
 
 ## Resumen de responsabilidades
 
-- Implementacion del agente RAG: carga de corpus, chunking, embeddings, ChromaDB, retrieval, prompt y generacion.
-- Evaluacion: pruebas iterativas, benchmark de 4 modelos, comparacion de calidad y latencia.
-- Documentacion: README, informe, declaracion de uso de IA, grupo, benchmark y registro de decisiones.
+- Implementación del agente RAG: carga de corpus, chunking, embeddings, ChromaDB, retrieval, prompt y generación.
+- Evaluación: pruebas iterativas, benchmark de 4 modelos, comparación de calidad y latencia.
+- Documentación: README, informe, declaración de uso de IA, grupo, benchmark y registro de decisiones.
 
 ## Convocatoria
 

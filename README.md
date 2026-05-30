@@ -1,17 +1,17 @@
 # Agente RAG para DNI Valencia
 
-Proyecto de la practica de Inteligencia Artificial: un agente RAG que responde preguntas sobre la asociacion DNI Valencia usando el corpus oficial de 16 ficheros de texto.
+Proyecto de la práctica de Inteligencia Artificial: un agente RAG que responde preguntas sobre la asociación DNI Valencia usando el corpus oficial de 16 ficheros de texto.
 
 El sistema recupera fragmentos relevantes del corpus, construye un prompt con contexto, genera una respuesta con un LLM y devuelve siempre las fuentes usadas. Cuando la informacion no aparece en el corpus, debe responder con la frase de rechazo configurada: `No tengo esa informacion en mis fuentes`.
 
 ## Estado de la entrega
 
-Capacidades documentadas en esta version:
+Capacidades documentadas en esta versión:
 
-- Banda 5: pipeline RAG completo con chunking, embeddings, vector store, retrieval, LLM y prompt anti-alucinacion.
+- Banda 5: pipeline RAG completo con chunking, embeddings, vector store, retrieval, LLM y prompt anti-alucinación.
 - Banda 6: cita de archivos fuente en cada respuesta.
 - Banda 7: benchmark comparativo con 4 modelos: `llama3.2:3b`, `qwen2.5:3b`, `poligpt` y `qwen`.
-- Banda 8: evaluacion RAGAs documentada y dos metricas propias en `evaluacion/`.
+- Banda 8: evaluación RAGAs documentada y dos métricas propias en `evaluacion/`.
 - Banda 10: no implementada; la arquitectura actual es single-agent modular, no hexagonal.
 
 El fichero [features.json](features.json) declara las bandas que se entregan realmente.
@@ -35,7 +35,7 @@ ollama pull llama3.2:3b
 ollama pull qwen2.5:3b
 ```
 
-## Configuracion
+## Configuración
 
 Copiar `.env.example` a `.env` si se quiere cambiar la configuracion por defecto:
 
@@ -66,7 +66,7 @@ Lanzar una consulta desde consola:
 python consultar.py "Como me apunto a los desayunos solidarios?"
 ```
 
-La funcion obligatoria del contrato esta en la raiz del repositorio:
+La función obligatoria del contrato está en la raíz del repositorio:
 
 ```python
 from consultar import consultar
@@ -98,7 +98,7 @@ La salida tiene esta forma:
 }
 ```
 
-Tambien existe una opcion HTTP con FastAPI:
+También existe una opción HTTP con FastAPI:
 
 ```bash
 uvicorn api:app --host 127.0.0.1 --port 8000
@@ -114,21 +114,21 @@ POST /query
 
 ```text
 .
-|-- consultar.py              # contrato principal de la practica
+|-- consultar.py              # contrato principal de la práctica
 |-- api.py                    # endpoint HTTP opcional
-|-- features.json             # declaracion de bandas y extras
+|-- features.json             # declaración de bandas y extras
 |-- AI_USAGE.md               # uso de IA durante el desarrollo
 |-- GRUPO.md                  # integrantes y reparto de trabajo
 |-- corpus/                   # 16 documentos oficiales de DNI Valencia
-|-- src/agente_rag/           # implementacion modular del agente
+|-- src/agente_rag/           # implementación modular del agente
 |   |-- chunker.py            # carga y troceo del corpus
 |   |-- embedder.py           # cliente de embeddings
-|   |-- retriever.py          # ChromaDB y recuperacion semantica
-|   |-- prompts.py            # prompt anti-alucinacion
-|   |-- generator.py          # generacion con Ollama o PoliGPT
-|   `-- pipeline.py           # orquestacion de la consulta
+|   |-- retriever.py          # ChromaDB y recuperación semántica
+|   |-- prompts.py            # prompt anti-alucinación
+|   |-- generator.py          # generación con Ollama o PoliGPT
+|   `-- pipeline.py           # orquestación de la consulta
 |-- scripts/
-|   |-- build_index.py        # genera el indice vectorial
+|   |-- build_index.py        # genera el índice vectorial
 |   `-- run_eval.py           # ejecuta el benchmark
 |-- benchmark/                # preguntas y resultados de benchmark
 |-- pruebas/                  # registro de pruebas iterativas
@@ -145,13 +145,13 @@ El flujo de una consulta es:
 3. `retriever.retrieve` convierte la pregunta en embedding y consulta ChromaDB.
 4. `prompts.build_prompt` inserta los chunks recuperados en un prompt con reglas anti-alucinacion.
 5. `generator.generate` llama al modelo configurado.
-6. El pipeline devuelve respuesta, fuentes, chunks y metricas.
+6. El pipeline devuelve respuesta, fuentes, chunks y métricas.
 
-El sistema usa `RecursiveCharacterTextSplitter` con `chunk_size=500` y `chunk_overlap=100`, una configuracion recomendada para mantener contexto suficiente sin inflar demasiado el prompt.
+El sistema usa `RecursiveCharacterTextSplitter` con `chunk_size=500` y `chunk_overlap=100`, una configuración recomendada para mantener contexto suficiente sin inflar demasiado el prompt.
 
 ## Benchmark
 
-El benchmark usa un conjunto fijo de 8 preguntas, con casos generales, preguntas sobre desayunos, comparaciones entre RESIS y COLES, preguntas de proyectos concretos y preguntas fuera de ambito.
+El benchmark usa un conjunto fijo de 8 preguntas, con casos generales, preguntas sobre desayunos, comparaciones entre RESIS y COLES, preguntas de proyectos concretos y preguntas fuera de ámbito.
 
 Modelos evaluados:
 
@@ -160,7 +160,7 @@ Modelos evaluados:
 - `poligpt` en PoliGPT UPV.
 - `qwen` en PoliGPT UPV.
 
-Resultados y analisis:
+Resultados y análisis:
 
 - [benchmark/benchmark.md](benchmark/benchmark.md)
 - [benchmark/benchmark.json](benchmark/benchmark.json)
@@ -168,7 +168,7 @@ Resultados y analisis:
 - [evaluacion/ragas_results.json](evaluacion/ragas_results.json)
 - [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md)
 
-La conclusion principal es que los modelos PoliGPT generan respuestas mas completas y estructuradas, pero con mas latencia; `qwen2.5:3b` ofrece buen equilibrio local; `llama3.2:3b` funciona correctamente pero presenta mas limitaciones en sintesis compleja.
+La conclusión principal es que los modelos PoliGPT generan respuestas más completas y estructuradas, pero con más latencia; `qwen2.5:3b` ofrece buen equilibrio local; `llama3.2:3b` funciona correctamente pero presenta más limitaciones en síntesis compleja.
 
 ## Tests
 
@@ -178,22 +178,22 @@ Los tests comprueban el contrato sin llamar al LLM real:
 pytest -q
 ```
 
-Nota: el entorno debe tener instaladas todas las dependencias de `requirements.txt`, incluida `openai`, porque el generador soporta tambien PoliGPT.
+Nota: el entorno debe tener instaladas todas las dependencias de `requirements.txt`, incluida `openai`, porque el generador soporta también PoliGPT.
 
 ## Limitaciones conocidas
 
-- La arquitectura no es hexagonal; el dominio aun depende de modulos concretos de infraestructura.
-- El retrieval es semantico con ChromaDB, sin BM25 ni re-ranking.
+- La arquitectura no es hexagonal; el dominio aún depende de módulos concretos de infraestructura.
+- El retrieval es semántico con ChromaDB, sin BM25 ni re-ranking.
 - El sistema puede ser conservador en preguntas generales cuando el contexto recuperado es parcial.
-- Las respuestas de modelos pequenos pueden mezclar informacion o sintetizar peor en preguntas comparativas.
+- Las respuestas de modelos pequeños pueden mezclar información o sintetizar peor en preguntas comparativas.
 - Los resultados RAGAs se calculan sobre runs reales de los 4 modelos declarados. Los runs locales se regeneraron con Ollama el 2026-05-30 y los runs PoliGPT se incorporaron desde los resultados guardados por el equipo.
 
-## Documentacion adicional
+## Documentación adicional
 
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): decisiones tecnicas.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): decisiones técnicas.
 - [docs/CONTRACT.md](docs/CONTRACT.md): contrato de interfaz.
-- [benchmark/README.md](benchmark/README.md): organizacion del benchmark.
-- [evaluacion/ragas_results.json](evaluacion/ragas_results.json): metricas RAGAs consolidadas.
-- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md): dos metricas propias.
+- [benchmark/README.md](benchmark/README.md): organización del benchmark.
+- [evaluacion/ragas_results.json](evaluacion/ragas_results.json): métricas RAGAs consolidadas.
+- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md): dos métricas propias.
 - [informe.md](informe.md): informe editable.
-- `informe.pdf`: version PDF para entrega, si se genera desde el informe.
+- `informe.pdf`: versión PDF para entrega, si se genera desde el informe.

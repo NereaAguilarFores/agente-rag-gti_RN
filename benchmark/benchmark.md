@@ -185,7 +185,7 @@ Aunque mejoró respecto a versiones anteriores, sigue mostrando limitaciones al 
 
 qwen2.5:3b ofreció resultados generalmente superiores a llama3.2:3b en tareas de síntesis y organización de respuestas.
 
-Sin embargo, todavía presenta limitaciones en preguntas complejas y requiere apoyarse en reglas de prompt para evitar interpretaciones incorrectas.
+Sin embargo, todavía presenta limitaciones en preguntas complejas y requiere apoyarse en reglas de prompt para evitar interpretaciónes incorrectas.
 
 # -------------------------------------------------------------------
 # -------------------------------------------------------------------

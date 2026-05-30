@@ -1,8 +1,8 @@
-# Arquitectura y decisiones tecnicas
+# Arquitectura y decisiones técnicas
 
 ## Arquitectura elegida
 
-El proyecto usa una arquitectura single-agent modular. No es una arquitectura hexagonal completa, pero separa las responsabilidades principales del sistema RAG en modulos independientes:
+El proyecto usa una arquitectura single-agent modular. No es una arquitectura hexagonal completa, pero separa las responsabilidades principales del sistema RAG en módulos independientes:
 
 - `chunker.py`: carga y trocea los documentos del corpus.
 - `embedder.py`: genera embeddings.
@@ -11,7 +11,7 @@ El proyecto usa una arquitectura single-agent modular. No es una arquitectura he
 - `generator.py`: llama al modelo generador.
 - `pipeline.py`: orquesta el flujo completo de consulta.
 
-Esta decision permite mantener el proyecto sencillo y compatible con el contrato de la practica, sin asumir el coste de reestructuracion necesario para Banda 10.
+Esta decision permite mantener el proyecto sencillo y compatible con el contrato de la práctica, sin asumir el coste de reestructuracion necesario para Banda 10.
 
 ## Flujo de indexacion
 
@@ -28,7 +28,7 @@ Esta decision permite mantener el proyecto sencillo y compatible con el contrato
 3. `retriever.retrieve` recupera los chunks mas similares.
 4. `prompts.build_prompt` crea un prompt con reglas anti-alucinacion.
 5. `generator.generate` llama al LLM configurado.
-6. El sistema devuelve respuesta, fuentes, chunks, metricas y trazas.
+6. El sistema devuelve respuesta, fuentes, chunks, métricas y trazas.
 
 ## Chunking
 
@@ -37,7 +37,7 @@ Se usa `RecursiveCharacterTextSplitter` con:
 - `chunk_size=500`.
 - `chunk_overlap=100`.
 
-Esta configuracion busca equilibrar:
+Esta configuración busca equilibrar:
 
 - contexto suficiente para responder preguntas complejas;
 - prompts no excesivamente largos;
@@ -51,16 +51,16 @@ Se usa ChromaDB persistente. La persistencia evita recalcular embeddings cada ve
 
 La coleccion usa similitud coseno. Internamente ChromaDB devuelve distancias, y el sistema las transforma en `score = 1 - distance` para que valores mas altos indiquen mayor similitud.
 
-## Prompt anti-alucinacion
+## Prompt anti-alucinación
 
 El prompt obliga al modelo a:
 
-- responder solo con informacion del contexto;
-- rechazar preguntas fuera de ambito;
+- responder solo con información del contexto;
+- rechazar preguntas fuera de ámbito;
 - citar siempre el archivo fuente;
-- no inventar datos numericos;
+- no inventar datos numéricos;
 - no inventar significados de siglas;
-- tratar RESIS y COLES segun lo que aparece en el corpus.
+- tratar RESIS y COLES según lo que aparece en el corpus.
 
 Durante las pruebas se reforzaron reglas especificas para evitar errores detectados en comparativas y siglas.
 
@@ -69,11 +69,11 @@ Durante las pruebas se reforzaron reglas especificas para evitar errores detecta
 El sistema puede usar:
 
 - Ollama local, obligatorio para cumplir el minimo de la practica.
-- PoliGPT UPV, usado para comparacion en benchmark.
+- PoliGPT UPV, usado para comparación en benchmark.
 
-El backend se selecciona con variables de entorno. La logica del pipeline se mantiene igual para comparar modelos de forma justa.
+El backend se selecciona con variables de entorno. La lógica del pipeline se mantiene igual para comparar modelos de forma justa.
 
-## Metricas
+## Métricas
 
 Cada respuesta incluye:
 
@@ -83,20 +83,20 @@ Cada respuesta incluye:
 - latencia;
 - modelo usado.
 
-Estas metricas permiten comparar rendimiento entre modelos en el benchmark.
+Estas métricas permiten comparar rendimiento entre modelos en el benchmark.
 
 ## Limitaciones
 
 - No hay arquitectura hexagonal con ports y adapters.
-- No se implementa retrieval hibrido BM25 + semantico.
+- No se implementa retrieval hibrido BM25 + semántico.
 - No hay re-ranking.
 - No hay memoria conversacional real, aunque el contrato acepta `conversation_id`.
-- La evaluacion RAGAs de Banda 8 esta documentada en `evaluacion/` como evaluacion manual consolidada.
+- La evaluación RAGAs de Banda 8 esta documentada en `evaluacion/` como evaluacion manual consolidada.
 
 ## Mejoras futuras
 
 - Migrar a arquitectura hexagonal si se aspira a Banda 10.
-- Anadir BM25 o re-ranking para mejorar recuperacion.
+- Añadir BM25 o re-ranking para mejorar recuperación.
 - Agrupar mejor pares `Q:/A:` antes del chunking.
 - Recalcular RAGAs con los JSON crudos de `benchmark/runs/` si se recuperan antes de la entrega.
 - Crear un frontend sencillo con Streamlit o Gradio como extra.

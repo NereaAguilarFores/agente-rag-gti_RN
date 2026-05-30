@@ -1,6 +1,6 @@
 # Uso de asistentes de IA
 
-Este documento declara de forma honesta las herramientas de IA usadas durante la practica y en que partes ayudaron. Todo el codigo y la documentacion entregados han sido revisados por las integrantes del grupo.
+Este documento declara de forma honesta las herramientas de IA usadas durante la práctica y en qué partes ayudaron. Todo el código y la documentación entregados han sido revisados por las integrantes del grupo.
 
 ## Herramientas usadas
 
@@ -10,7 +10,7 @@ Este documento declara de forma honesta las herramientas de IA usadas durante la
 - [ ] Cursor / Windsurf / IDE con asistente integrado.
 - [ ] Gemini.
 - [X] Ollama local con modelos abiertos.
-- [X] PoliGPT UPV para evaluacion comparativa.
+- [X] PoliGPT UPV para evaluación comparativa.
 - [ ] Otras.
 
 ## Uso de ChatGPT / Codex
@@ -18,10 +18,10 @@ Este documento declara de forma honesta las herramientas de IA usadas durante la
 ChatGPT/Codex se uso como apoyo en:
 
 - Comprension de la estructura del agente RAG: separacion entre `chunker`, `retriever`, `generator`, `prompts` y `pipeline`.
-- Revision de errores de ejecucion e instalacion de dependencias.
-- Ayuda para redactar y reorganizar documentacion de entrega.
-- Apoyo en la interpretacion de resultados de pruebas y benchmark.
-- Revision de referencias antiguas de la plantilla original para adaptarlas al caso DNI Valencia.
+- Revisión de errores de ejecución e instalación de dependencias.
+- Ayuda para redactar y reorganizar documentación de entrega.
+- Apoyo en la interpretación de resultados de pruebas y benchmark.
+- Revisión de referencias antiguas de la plantilla original para adaptarlas al caso DNI Valencia.
 
 Las propuestas generadas por IA fueron revisadas manualmente antes de incorporarse al proyecto.
 
@@ -44,10 +44,10 @@ Se registraron resultados de calidad, latencia, tokens de entrada/salida y obser
 
 ## Partes revisadas por el grupo
 
-- Prompt anti-alucinacion.
+- Prompt anti-alucinación.
 - Respuestas sobre RESIS, COLES y desayunos solidarios.
 - Ficheros de benchmark.
-- Documentacion obligatoria de entrega.
+- Documentación obligatoria de entrega.
 - Declaracion de bandas en `features.json`.
 
 ## No usado para
@@ -59,7 +59,7 @@ Se registraron resultados de calidad, latencia, tokens de entrada/salida y obser
 
 ## Compromiso
 
-Hemos leido y entendido el codigo y la documentacion que entregamos. En la defensa oral podremos explicar el flujo del agente, las decisiones tomadas y las limitaciones del sistema.
+Hemos leído y entendido el código y la documentación que entregamos. En la defensa oral podremos explicar el flujo del agente, las decisiones tomadas y las limitaciones del sistema.
 
 Firma digital:
 

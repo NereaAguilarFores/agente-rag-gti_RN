@@ -20,7 +20,7 @@ qwen2.5:3b
 Aspectos positivos:
 - Responde correctamente a preguntas simples.
 - Mantiene el rechazo correcto en preguntas fuera de ámbito.
-- Latencia baja (entre 2 y 4 segundos en la mayoría de consultas).
+- Latencia baja (entre 2 y 4 segúndos en la mayoría de consultas).
 - Recupera correctamente las fuentes relevantes.
 
 Aspectos negativos:
@@ -32,4 +32,4 @@ Aspectos negativos:
 
 ## Conclusión
 
-Qwen2.5:3b ofrece tiempos de respuesta muy buenos y mantiene correctamente el comportamiento anti-alucinación. Sin embargo, sigue mostrando problemas en preguntas comparativas complejas, especialmente en la diferenciación entre RESIS y COLES.
+Qwen2.5:3b ofrece tiempos de respuesta muy buenos y mantiene correctamente el comportamiento anti-alucinación. Sin embargo, sigue mostrando problemás en preguntas comparativas complejas, especialmente en la diferenciación entre RESIS y COLES.

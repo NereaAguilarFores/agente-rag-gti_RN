@@ -30,13 +30,13 @@ Observaciones:
 - Las preguntas fuera de ámbito fueron rechazadas correctamente mediante la frase de rechazo configurada.
 - La comparación entre RESIS y COLES fue respondida correctamente utilizando información de varios documentos.
 - El modelo mostró una buena capacidad de síntesis y organización de respuestas.
-- Se detectó un fallo en la pregunta "¿Qué es DNI?", donde la respuesta generada no contestó a la pregunta formulada.
+- Se detectó un fallo en la pregunta "¿Qué es DNI", donde la respuesta generada no contestó a la pregunta fórmulada.
 - Las respuestas fueron generalmente más extensas que las obtenidas con modelos locales.
 - Se observaron tiempos de respuesta superiores a los de Ollama en varias preguntas.
 
 ---
 
-## Conclusiones
+## Conclusiónes
 
 El modelo qwen disponible en PoliGPT obtuvo resultados satisfactorios en tareas de recuperación y síntesis de información.
 
