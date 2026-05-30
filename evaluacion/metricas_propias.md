@@ -1,10 +1,10 @@
-# Metricas propias
+# Métricas propias
 
 Ademas de las cuatro metricas RAGAs, se definen dos metricas propias adaptadas a esta practica.
 
-## 1. Tasa de rechazo correcto fuera de ambito
+## 1. Tasa de rechazo correcto fuera de ámbito
 
-### Definicion
+### Definición
 
 Mide si el agente rechaza correctamente las preguntas cuya respuesta no aparece en el corpus.
 
@@ -20,13 +20,13 @@ Se considera rechazo correcto cuando la respuesta contiene la frase:
 No tengo esa informacion en mis fuentes
 ```
 
-### Justificacion
+### Justificación
 
-El control anti-alucinacion es un requisito central de la practica. Esta metrica mide directamente si el agente evita inventar informacion cuando se le pregunta por temas externos al corpus.
+El control anti-alucinación es un requisito central de la práctica. Esta métrica mide directamente si el agente evita inventar información cuando se le pregunta por temas externos al corpus.
 
 ### Resultado
 
-En el benchmark hay 2 preguntas fuera de ambito:
+En el benchmark hay 2 preguntas fuera de ámbito:
 
 - `q7`: "¿Cuánto cuesta el alquiler en Valencia?"
 - `q8`: "¿Cuál es la mejor universidad para estudiar medicina?"
@@ -44,7 +44,7 @@ Promedio global: **1.00**.
 
 ## 2. Cobertura de fuentes esperadas
 
-### Definicion
+### Definición
 
 Mide si el sistema recupera o cita los documentos esperados para cada pregunta del benchmark.
 
@@ -54,9 +54,9 @@ Formula:
 cobertura_fuentes = fuentes_esperadas_encontradas / total_fuentes_esperadas
 ```
 
-Para preguntas fuera de ambito no se computa cobertura de fuentes, porque la respuesta correcta es rechazar.
+Para preguntas fuera de ámbito no se computa cobertura de fuentes, porque la respuesta correcta es rechazar.
 
-### Justificacion
+### Justificación
 
 La practica no solo pide responder, sino citar fuentes. Esta metrica evalua la calidad del retrieval y la trazabilidad documental.
 
@@ -73,8 +73,8 @@ La cobertura se estima a partir de las fuentes esperadas definidas en `benchmark
 
 Promedio global: **1.00**.
 
-## Interpretacion
+## Interpretación
 
-- La tasa de rechazo correcto es alta, lo que indica que el prompt anti-alucinacion funciona bien.
+- La tasa de rechazo correcto es alta, lo que indica que el prompt anti-alucinación funciona bien.
 - La cobertura de fuentes esperadas es alta en los cuatro runs reales, aunque eso no garantiza que la respuesta final sea perfecta: `qwen2.5:3b` recupera las fuentes adecuadas pero confunde RESIS en una respuesta.
 - Los fallos de cobertura se concentran en preguntas generales o comparativas donde el retrieval debe combinar varios documentos.
