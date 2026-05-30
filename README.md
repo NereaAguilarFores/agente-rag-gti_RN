@@ -11,7 +11,7 @@ Capacidades documentadas en esta version:
 - Banda 5: pipeline RAG completo con chunking, embeddings, vector store, retrieval, LLM y prompt anti-alucinacion.
 - Banda 6: cita de archivos fuente en cada respuesta.
 - Banda 7: benchmark comparativo con 4 modelos: `llama3.2:3b`, `qwen2.5:3b`, `poligpt` y `qwen`.
-- Banda 8: pendiente de incorporar al repositorio si se dispone de resultados RAGAs y metricas propias.
+- Banda 8: evaluacion RAGAs documentada y dos metricas propias en `evaluacion/`.
 - Banda 10: no implementada; la arquitectura actual es single-agent modular, no hexagonal.
 
 El fichero [features.json](features.json) declara las bandas que se entregan realmente.
@@ -165,6 +165,8 @@ Resultados y analisis:
 - [benchmark/benchmark.md](benchmark/benchmark.md)
 - [benchmark/benchmark.json](benchmark/benchmark.json)
 - [benchmark/preguntas.json](benchmark/preguntas.json)
+- [evaluacion/ragas_results.json](evaluacion/ragas_results.json)
+- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md)
 
 La conclusion principal es que los modelos PoliGPT generan respuestas mas completas y estructuradas, pero con mas latencia; `qwen2.5:3b` ofrece buen equilibrio local; `llama3.2:3b` funciona correctamente pero presenta mas limitaciones en sintesis compleja.
 
@@ -184,12 +186,14 @@ Nota: el entorno debe tener instaladas todas las dependencias de `requirements.t
 - El retrieval es semantico con ChromaDB, sin BM25 ni re-ranking.
 - El sistema puede ser conservador en preguntas generales cuando el contexto recuperado es parcial.
 - Las respuestas de modelos pequenos pueden mezclar informacion o sintetizar peor en preguntas comparativas.
-- Los resultados RAGAs de Banda 8 no estan incorporados en el repositorio actual.
+- Los resultados RAGAs se calculan sobre runs reales de los 4 modelos declarados. Los runs locales se regeneraron con Ollama el 2026-05-30 y los runs PoliGPT se incorporaron desde los resultados guardados por el equipo.
 
 ## Documentacion adicional
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): decisiones tecnicas.
 - [docs/CONTRACT.md](docs/CONTRACT.md): contrato de interfaz.
 - [benchmark/README.md](benchmark/README.md): organizacion del benchmark.
+- [evaluacion/ragas_results.json](evaluacion/ragas_results.json): metricas RAGAs consolidadas.
+- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md): dos metricas propias.
 - [informe.md](informe.md): informe editable.
 - `informe.pdf`: version PDF para entrega, si se genera desde el informe.

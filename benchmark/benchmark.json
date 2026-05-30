@@ -3,12 +3,12 @@
     {
       "alias": "llama3.2:3b",
       "servidor": "ollama_local",
-      "resultado": "runs/run_20260519_044702.json"
+      "resultado": "runs/run_20260530_161401.json"
     },
     {
       "alias": "qwen2.5:3b",
       "servidor": "ollama_local",
-      "resultado": "runs/run_20260529_200230.json"
+      "resultado": "runs/run_20260530_164511.json"
     },
     {
       "alias": "poligpt",

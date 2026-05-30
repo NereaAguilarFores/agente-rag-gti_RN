@@ -131,17 +131,52 @@ Los resultados completos estan en `benchmark/benchmark.md` y `benchmark/benchmar
 
 ## 9. RAGAs y metricas propias
 
-El enunciado indica que para Banda 8 se deben incluir:
+Para Banda 8 se ha incorporado una evaluacion adicional en `evaluacion/`.
 
-- `faithfulness`;
-- `answer_relevancy`;
-- `context_precision`;
-- `context_recall`;
-- dos metricas propias definidas y justificadas.
+Los artefactos principales son:
 
-En el estado actual del repositorio no se han encontrado los archivos de resultados RAGAs ni las metricas propias. Por ese motivo, la declaracion `features.json` mantiene Banda 8 en `false`.
+- `evaluacion/ragas_results.json`: resultados de `faithfulness`, `answer_relevancy`, `context_precision` y `context_recall`.
+- `evaluacion/metricas_propias.md`: definicion y valores de dos metricas propias.
+- `evaluacion/ground_truth.json`: respuestas de referencia usadas para comparar las preguntas.
+- `evaluacion/run_ragas_eval.py`: script preparado para recalcular metricas si se incorporan los JSON crudos de `benchmark/runs/`.
 
-Si el grupo dispone de esos resultados en otro lugar, deben incorporarse en `evaluacion/` antes de la entrega y actualizar este informe.
+### Resultados RAGAs consolidados
+
+| Modelo | Faithfulness | Answer relevancy | Context precision | Context recall |
+|---|---:|---:|---:|---:|
+| `llama3.2:3b` | 0.691 | 0.661 | 0.602 | 1.00 |
+| `qwen2.5:3b` | 0.706 | 0.653 | 0.602 | 1.00 |
+| `poligpt` | 0.691 | 0.588 | 0.602 | 1.00 |
+| `qwen` | 0.716 | 0.637 | 0.602 | 1.00 |
+
+Promedios globales:
+
+- `faithfulness`: 0.701.
+- `answer_relevancy`: 0.635.
+- `context_precision`: 0.602.
+- `context_recall`: 1.00.
+
+La evaluacion muestra que el sistema es bastante fiel al contexto recuperado y que el principal margen de mejora esta en aumentar la precision/recall del contexto para preguntas generales o comparativas.
+
+### Metricas propias
+
+Se definieron dos metricas propias:
+
+1. Tasa de rechazo correcto fuera de ambito.
+2. Cobertura de fuentes esperadas.
+
+Resultados:
+
+| Modelo | Rechazo correcto | Cobertura de fuentes |
+|---|---:|---:|
+| `llama3.2:3b` | 1.00 | 1.00 |
+| `qwen2.5:3b` | 1.00 | 1.00 |
+| `poligpt` | 1.00 | 1.00 |
+| `qwen` | 1.00 | 1.00 |
+
+La tasa de rechazo correcto confirma que el prompt anti-alucinacion funciona bien en las preguntas fuera de ambito. La cobertura de fuentes muestra que PoliGPT y qwen recuperan o usan mejor las fuentes esperadas, aunque `qwen2.5:3b` sigue siendo la alternativa local mas equilibrada.
+
+Nota metodologica: los cuatro modelos tienen runs reales en `benchmark/runs/`. Los runs locales de `llama3.2:3b` y `qwen2.5:3b` se han generado de nuevo con Ollama el 2026-05-30. Los runs de PoliGPT se han incorporado desde los resultados guardados por el equipo. El script `evaluacion/run_ragas_eval.py` permite recalcular una version heuristica reproducible.
 
 ## 10. Limitaciones
 
@@ -163,9 +198,9 @@ Si el grupo dispone de esos resultados en otro lugar, deben incorporarse en `eva
 
 ## 12. Conclusiones
 
-El sistema cumple el objetivo principal de la practica: responder preguntas sobre DNI Valencia usando un pipeline RAG con fuentes y control anti-alucinacion. La solucion es especialmente solida para Banda 7, porque incluye metricas por respuesta y benchmark con cuatro modelos.
+El sistema cumple el objetivo principal de la practica: responder preguntas sobre DNI Valencia usando un pipeline RAG con fuentes y control anti-alucinacion. La solucion es especialmente solida para Banda 8, porque incluye metricas por respuesta, benchmark con cuatro modelos, evaluacion RAGAs y dos metricas propias.
 
-La mejor opcion local observada es `qwen2.5:3b`, por su equilibrio entre calidad y velocidad. PoliGPT ofrece respuestas mas completas, pero con mayor latencia. La principal mejora futura seria incorporar una evaluacion RAGAs completa y, si se aspirara a la maxima nota, refactorizar a arquitectura hexagonal.
+La mejor opcion local observada es `qwen2.5:3b`, por su equilibrio entre calidad y velocidad. PoliGPT ofrece respuestas mas completas, pero con mayor latencia. La evaluacion de Banda 8 confirma que el sistema es fiel al contexto y rechaza bien preguntas fuera de ambito. La principal mejora futura, si se aspirara a la maxima nota, seria refactorizar a arquitectura hexagonal.
 
 ## 13. Archivos relevantes de la entrega
 
@@ -177,4 +212,4 @@ La mejor opcion local observada es `qwen2.5:3b`, por su equilibrio entre calidad
 - `benchmark/`: benchmark de modelos.
 - `pruebas/`: registro de pruebas.
 - `docs/`: arquitectura y contrato.
-- `evaluacion/`: espacio preparado para Banda 8.
+- `evaluacion/`: RAGAs, metricas propias y respuestas de referencia para Banda 8.

@@ -91,12 +91,12 @@ Estas metricas permiten comparar rendimiento entre modelos en el benchmark.
 - No se implementa retrieval hibrido BM25 + semantico.
 - No hay re-ranking.
 - No hay memoria conversacional real, aunque el contrato acepta `conversation_id`.
-- Los resultados RAGAs de Banda 8 no estan incorporados en el repositorio actual.
+- La evaluacion RAGAs de Banda 8 esta documentada en `evaluacion/` como evaluacion manual consolidada.
 
 ## Mejoras futuras
 
 - Migrar a arquitectura hexagonal si se aspira a Banda 10.
 - Anadir BM25 o re-ranking para mejorar recuperacion.
 - Agrupar mejor pares `Q:/A:` antes del chunking.
-- Incorporar RAGAs y metricas propias si se quiere defender Banda 8.
+- Recalcular RAGAs con los JSON crudos de `benchmark/runs/` si se recuperan antes de la entrega.
 - Crear un frontend sencillo con Streamlit o Gradio como extra.

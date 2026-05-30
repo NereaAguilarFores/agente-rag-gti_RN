@@ -33,5 +33,3 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Resultados de evaluación (regenerables)
-benchmark/runs/

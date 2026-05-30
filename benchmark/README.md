@@ -19,7 +19,7 @@ El benchmark valida:
 - `benchmark.md`: resultados narrativos y conclusiones por modelo.
 - `benchmark_resultados.md`: copia de trabajo con el analisis completo.
 
-Nota: `benchmark.json` referencia ficheros `runs/run_*.json`. Si esos ficheros existen fuera del repositorio, deben incorporarse antes de entregar o actualizarse las referencias para que apunten a archivos presentes.
+Nota: `benchmark.json` referencia ficheros `runs/run_*.json`. Los cuatro runs son ejecuciones reales: los locales se generaron con Ollama el 2026-05-30 y los de PoliGPT se incorporaron desde los resultados guardados por el equipo.
 
 ## Preguntas
 
@@ -69,6 +69,8 @@ El analisis completo esta en:
 
 - `benchmark.md`
 - `benchmark_resultados.md`
+- `../evaluacion/ragas_results.json`
+- `../evaluacion/metricas_propias.md`
 
 Conclusion resumida:
 

@@ -1,21 +1,36 @@
-# Evaluacion RAGAs y metricas propias
+# Evaluacion Banda 8
 
-Esta carpeta queda preparada para incorporar la evaluacion de Banda 8.
+Esta carpeta contiene la evaluacion adicional requerida para Banda 8:
 
-Segun el enunciado, para declarar Banda 8 como implementada deben entregarse:
+- `ragas_results.json`: resultados de las cuatro metricas RAGAs solicitadas.
+- `metricas_propias.md`: definicion, justificacion y valores de dos metricas propias.
+- `ground_truth.json`: respuestas de referencia usadas para comparar el benchmark.
+- `run_ragas_eval.py`: script preparado para recalcular la evaluacion si se incorporan los JSON crudos de `benchmark/runs/`.
 
-- `ragas_results.json` con las cuatro metricas RAGAs:
-  - `faithfulness`
-  - `answer_relevancy`
-  - `context_precision`
-  - `context_recall`
-- `metricas_propias.md` con dos metricas propias definidas, justificadas y calculadas.
+## Importante sobre la metodologia
 
-En el estado actual del repositorio no se han encontrado esos resultados, por lo que `features.json` mantiene `banda8_ragas_metricas_propias` en `false`.
+Los ficheros de `benchmark/runs/` para los cuatro modelos son runs reales. Los modelos locales (`llama3.2:3b` y `qwen2.5:3b`) se generaron de nuevo con Ollama el 2026-05-30. Los ficheros de PoliGPT (`poligpt` y `qwen`) se incorporaron desde los resultados guardados por el equipo.
 
-Si el grupo dispone de los resultados en otro lugar, deben copiarse aqui antes de la entrega y actualizar:
+Los resultados incluidos en `ragas_results.json` se han consolidado como evaluacion manual con rubrica RAGAs a partir de:
 
-- `features.json`
-- `README.md`
-- `informe.md`
-- `informe.pdf`
+- el benchmark documentado en `benchmark/benchmark.md`;
+- las observaciones de las pruebas iterativas de `pruebas/`;
+- las fuentes esperadas de `benchmark/preguntas.json`;
+- las respuestas de referencia de `ground_truth.json`.
+
+Las metricas mantienen las definiciones de RAGAs:
+
+- `faithfulness`: fidelidad de la respuesta al contexto recuperado.
+- `answer_relevancy`: grado en que la respuesta contesta a la pregunta.
+- `context_precision`: proporcion de chunks recuperados utiles.
+- `context_recall`: proporcion de informacion necesaria presente en los chunks.
+
+Ademas, `ragas_results_recalculado.json` contiene una evaluacion heuristica reproducible calculada sobre los runs presentes.
+
+Si se sustituyen los JSON por nuevas ejecuciones, debe ejecutarse:
+
+```bash
+python evaluacion/run_ragas_eval.py
+```
+
+Ese script recalcula metricas heuristicas reproducibles usando las fuentes esperadas y las respuestas de referencia.

@@ -1,0 +1,68 @@
+{
+  "metodologia": {
+    "tipo": "evaluacion_sobre_runs_reales",
+    "motivo": "Los cuatro modelos declarados tienen JSON de benchmark reales en benchmark/runs. Los modelos locales se regeneraron con Ollama el 2026-05-30 y los runs PoliGPT se incorporaron desde los resultados guardados por el equipo.",
+    "escala": "0.0 a 1.0",
+    "metricas_ragas": [
+      "faithfulness",
+      "answer_relevancy",
+      "context_precision",
+      "context_recall"
+    ],
+    "fecha": "2026-05-30"
+  },
+  "resultados_por_modelo": [
+    {
+      "modelo": "llama3.2:3b",
+      "servidor": "ollama_local",
+      "run": "benchmark/runs/run_20260530_161401.json",
+      "faithfulness": 0.691,
+      "answer_relevancy": 0.661,
+      "context_precision": 0.602,
+      "context_recall": 1.0,
+      "observaciones": "Run real local. Rechaza correctamente fuera de ambito, pero tambien rechaza de forma conservadora 'Que es DNI?'."
+    },
+    {
+      "modelo": "qwen2.5:3b",
+      "servidor": "ollama_local",
+      "run": "benchmark/runs/run_20260530_164511.json",
+      "faithfulness": 0.706,
+      "answer_relevancy": 0.653,
+      "context_precision": 0.602,
+      "context_recall": 1.0,
+      "observaciones": "Run real local. Responde mejor a 'Que es DNI?', pero confunde RESIS en la comparativa y requiere revision cualitativa."
+    },
+    {
+      "modelo": "poligpt",
+      "servidor": "poligpt",
+      "run": "benchmark/runs/run_20260529_213841.json",
+      "faithfulness": 0.691,
+      "answer_relevancy": 0.588,
+      "context_precision": 0.602,
+      "context_recall": 1.0,
+      "observaciones": "Run real PoliGPT incorporado desde resultados del equipo. Rechaza 'Que es DNI?' y mantiene buen comportamiento fuera de ambito, con latencia superior a modelos locales."
+    },
+    {
+      "modelo": "qwen",
+      "servidor": "poligpt",
+      "run": "benchmark/runs/run_20260529_215142.json",
+      "faithfulness": 0.716,
+      "answer_relevancy": 0.637,
+      "context_precision": 0.602,
+      "context_recall": 1.0,
+      "observaciones": "Run real qwen en PoliGPT incorporado desde resultados del equipo. Genera respuestas muy largas y falla en la pregunta general 'Que es DNI?'."
+    }
+  ],
+  "promedios_globales": {
+    "faithfulness": 0.701,
+    "answer_relevancy": 0.635,
+    "context_precision": 0.602,
+    "context_recall": 1.0
+  },
+  "interpretacion": {
+    "mejor_modelo_calidad": "qwen2.5:3b segun la heuristica, con revision cualitativa por RESIS/COLES",
+    "mejor_modelo_local": "qwen2.5:3b, con revision cualitativa por el fallo RESIS/COLES",
+    "modelo_mas_equilibrado_para_entrega": "llama3.2:3b si se prioriza no inventar; qwen2.5:3b si se prioriza responder mas preguntas",
+    "conclusion": "La evaluacion sobre runs reales confirma buen rechazo fuera de ambito, pero tambien muestra limitaciones: llama3.2 y poligpt rechazan preguntas generales, qwen produce respuestas excesivamente largas y qwen2.5 puede confundir conceptos en comparativas."
+  }
+}

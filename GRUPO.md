@@ -23,5 +23,5 @@
 
 ## Convocatoria
 
-- Entrega: PENDIENTE.
-- Oral en clase: PENDIENTE.
+- Entrega: 30/05/2026.
+- Oral en clase: por confirmar por el profesorado.
