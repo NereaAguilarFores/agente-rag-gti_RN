@@ -1,0 +1,590 @@
+{
+  "llama3.2:3b": {
+    "num_preguntas": 8,
+    "resultados_por_pregunta": [
+      {
+        "id": "q1",
+        "pregunta": "¿Qué es DNI?",
+        "categoria": "general",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "DNI es una asociación juvenil de voluntariado en Valencia que desarrolla proyectos sociales como desayunos solidarios, actividades con personas mayores y refuerzo escolar.",
+        "ragas": {
+          "faithfulness": 0.024,
+          "answer_relevancy": 0.043,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q2",
+        "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+        "categoria": "desayunos",
+        "respuesta": "Según el archivo [10_proyectos.txt], para apuntarse a los desayunos solidarios, debes:\n\n* Ver si ese sábado hay actividad (publicada por la comunidad de WhatsApp y redes sociales)\n* Inscribirte en el formulario publicado\n* No tienes que ir al resto de actividades si te apuntas un día\n\nEn resumen, no hay una forma única de apuntarse a los desayunos solidarios, ya que depende del evento específico.",
+        "ground_truth": "Para apuntarse a los desayunos solidarios hay que esperar al miércoles, cuando se publica el formulario de inscripción por la comunidad de WhatsApp y redes sociales. Es una actividad puntual y no obliga a asistir siempre.",
+        "ragas": {
+          "faithfulness": 0.215,
+          "answer_relevancy": 0.636,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q3",
+        "pregunta": "¿En qué se diferencian RESIS y COLES?",
+        "categoria": "comparativa",
+        "respuesta": "RESIS (Actividades con Abuelitos) y COLES (Refuerzo Escolar con Niños) son dos programas diferentes dentro de la asociación DNI Valencia. A continuación, se presentan las diferencias clave entre ambos:\n\n**COLES (Refuerzo Escolar con Niños)**\n\n* Se centra en ayudar a niños que viven realidades difíciles en un colegio.\n* El voluntariado es más enfocado en clases de repaso de deberes o conceptos, lectura de cuentos y realización de manualidades.\n* Los niños son los principales beneficiarios del programa.\n* Se lleva a cabo en el CEIP Antonio Ferrandis de la Coma, Valencia.\n\n**RESIS (Actividades con Abuelitos)**\n\n* Se centra en ayudar a abuelitos que mejor están de salud física y mental en una residencia.\n* Las actividades se realizan semanalmente y pueden incluir eventos como ver Fallas, visitar museos o conciertos.\n* Los abuelitos son los principales beneficiarios del programa.\n* La residencia L'Acollida es el lugar donde se llevan a cabo las actividades de RESIS.\n\nEn resumen, COLES se enfoca en ayudar a niños en un colegio, mientras que RESIS se centra en ayudar a abuelitos en una residencia.",
+        "ground_truth": "COLES es refuerzo escolar con niños en situación vulnerable, con actividades como repaso, lectura y manualidades. RESIS consiste en actividades y acompañamiento con personas mayores en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.397,
+          "answer_relevancy": 0.696,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q4",
+        "pregunta": "¿Qué se hace en el refuerzo escolar?",
+        "categoria": "coles",
+        "respuesta": "En el refuerzo escolar (COLES), se realizan actividades de apoyo y fomento del aprendizaje en niños que viven realidades difíciles, dependiendo de la edad. Estas actividades pueden incluir:\n\n*   Repaso de deberes o conceptos\n*   Lectura de cuentos\n*   Realización de manualidades\n\nEstas actividades se realizan en el CEIP Antonio Ferrandis de la Coma Valencia (01_faq_dni.txt) y, en algunos casos, en una biblioteca tutorizada en Valencia (11_horarios_ubicaciones.txt).",
+        "ground_truth": "En el refuerzo escolar se ayuda a niños que viven realidades difíciles mediante repaso de deberes o conceptos, lectura de cuentos y manualidades.",
+        "ragas": {
+          "faithfulness": 0.228,
+          "answer_relevancy": 0.864,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q5",
+        "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+        "categoria": "resis",
+        "respuesta": "Según el CONTEXTO, las actividades con los abuelitos (RESIS) se realizan todos los miércoles de 5:30 a 6:30 de la tarde (17:30-18:30h).",
+        "ground_truth": "Las actividades con los abuelitos se realizan los miércoles de 17:30 a 18:30 en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.121,
+          "answer_relevancy": 0.688,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q6",
+        "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+        "categoria": "desayunos",
+        "respuesta": "Según el CONTEXTO, la principal diferencia entre \"desayuno solidario\" y \"cena solidaria\" es la hora y el tipo de alimentos. En los desayunos solidarios se llevan café, zumos y bollería, mientras que en las cenas se ofrecen bocadillos y fruta.\n\nNo tengo esa información en mis fuentes sobre qué diferencia hay entre desayuno solidario y cena solidaria en términos de la duración o el número de personas involucradas.",
+        "ground_truth": "La diferencia principal es la hora y los alimentos: en desayunos se lleva café, zumos y bollería; en cenas, bocadillos y fruta.",
+        "ragas": {
+          "faithfulness": 0.199,
+          "answer_relevancy": 0.833,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q7",
+        "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.023,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      },
+      {
+        "id": "q8",
+        "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes. El CONTEXTO no menciona ninguna universidad, especialmente para estudiar medicina.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.033,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      }
+    ],
+    "medias_ragas": {
+      "faithfulness": 0.155,
+      "answer_relevancy": 0.72,
+      "context_precision": 0.602,
+      "context_recall": 1.0
+    }
+  },
+  "qwen2.5:3b": {
+    "num_preguntas": 8,
+    "resultados_por_pregunta": [
+      {
+        "id": "q1",
+        "pregunta": "¿Qué es DNI?",
+        "categoria": "general",
+        "respuesta": "DNI es un proyecto de la Asociación DNI Valencia. Su filosofía se centra en:\n\n- La realización de charlas y conferencias con abuelitos en residencias (PROYECTO DE RESIDENCIAS).\n- El objetivo principal es acercar a los mayores, especialmente aquellos que viven en residencias, con sus nietos.\n\nNo hay información específica sobre su filosofía general o su impacto social en el contexto proporcionado.",
+        "ground_truth": "DNI es una asociación juvenil de voluntariado en Valencia que desarrolla proyectos sociales como desayunos solidarios, actividades con personas mayores y refuerzo escolar.",
+        "ragas": {
+          "faithfulness": 0.381,
+          "answer_relevancy": 0.435,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q2",
+        "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+        "categoria": "desayunos",
+        "respuesta": "Para inscribirte en los desayunos solidarios:\n\n1. Se realiza siempre los sábados.\n2. El miércoles anterior se publica por la comunidad de WhatsApp y redes sociales un formulario para inscribirse.\n3. No es necesario que te apuntes a todas las actividades si no tienes tiempo, ya que los desayunos son actividades puntuales.",
+        "ground_truth": "Para apuntarse a los desayunos solidarios hay que esperar al miércoles, cuando se publica el formulario de inscripción por la comunidad de WhatsApp y redes sociales. Es una actividad puntual y no obliga a asistir siempre.",
+        "ragas": {
+          "faithfulness": 0.244,
+          "answer_relevancy": 0.636,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q3",
+        "pregunta": "¿En qué se diferencian RESIS y COLES?",
+        "categoria": "comparativa",
+        "respuesta": "RESIS (refuerzo escolar con niños) consiste en actividades de refuerzo escolar que se llevan a cabo en un colegio, mientras que RESIS (actividades con abuelitos/residencias) implica realizar actividades para los residentes en la residencia L'Acollida. En RESIS, las actividades suelen ser más variadas y pueden incluir eventos puntuales como ver Fallas, visitar museos o asistir a conciertos, además de atender a los abuelitos según sus condiciones de salud física y mental.",
+        "ground_truth": "COLES es refuerzo escolar con niños en situación vulnerable, con actividades como repaso, lectura y manualidades. RESIS consiste en actividades y acompañamiento con personas mayores en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.252,
+          "answer_relevancy": 0.522,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q4",
+        "pregunta": "¿Qué se hace en el refuerzo escolar?",
+        "categoria": "coles",
+        "respuesta": "En el refuerzo escolar (COLES), se realizan actividades de repaso de deberes o conceptos y la lectura de cuentos, además de realizar manualidades. Este tipo de actividad se lleva a cabo en el CEIP Antonio Ferrandis de la Coma Valencia. Las sesiones son los días lunes, martes, miércoles, jueves y viernes entre las 15:30 y 16:30 horas. Los niños van desde los tres años hasta sexto de primaria, divididos en grupos por edades. La asociación proporciona transporte para que todos los voluntarios puedan asistir.",
+        "ground_truth": "En el refuerzo escolar se ayuda a niños que viven realidades difíciles mediante repaso de deberes o conceptos, lectura de cuentos y manualidades.",
+        "ragas": {
+          "faithfulness": 0.336,
+          "answer_relevancy": 0.773,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q5",
+        "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+        "categoria": "resis",
+        "respuesta": "Las actividades con los abuelitos (RESIS) se realizan todos los miércoles de 17:30 a 18:30 en la residencia L'Acollida, ubicada en la calle Crevillente 22, cerca de la Avenida Blasco Ibáñez en Valencia. Para confirmar detalles de la próxima sesión, consulta el grupo de WhatsApp o contacta al 962 025 978.",
+        "ground_truth": "Las actividades con los abuelitos se realizan los miércoles de 17:30 a 18:30 en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.291,
+          "answer_relevancy": 1.0,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q6",
+        "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+        "categoria": "desayunos",
+        "respuesta": "La principal diferencia entre un desayuno solidario y una cena solidaria es la hora y el tipo de alimentos que se ofrecen. Los desayunos solucionarios llevan café, zumos y bollería; mientras que las cenas solidarias ofrecen bocadillos y fruta.",
+        "ground_truth": "La diferencia principal es la hora y los alimentos: en desayunos se lleva café, zumos y bollería; en cenas, bocadillos y fruta.",
+        "ragas": {
+          "faithfulness": 0.145,
+          "answer_relevancy": 0.833,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q7",
+        "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.023,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      },
+      {
+        "id": "q8",
+        "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.017,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      }
+    ],
+    "medias_ragas": {
+      "faithfulness": 0.211,
+      "answer_relevancy": 0.775,
+      "context_precision": 0.602,
+      "context_recall": 1.0
+    }
+  },
+  "poligpt": {
+    "num_preguntas": 8,
+    "resultados_por_pregunta": [
+      {
+        "id": "q1",
+        "pregunta": "¿Qué es DNI?",
+        "categoria": "general",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "DNI es una asociación juvenil de voluntariado en Valencia que desarrolla proyectos sociales como desayunos solidarios, actividades con personas mayores y refuerzo escolar.",
+        "ragas": {
+          "faithfulness": 0.024,
+          "answer_relevancy": 0.043,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q2",
+        "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+        "categoria": "desayunos",
+        "respuesta": "Para apuntarte a los desayunos solidarios debes estar atento al miércoles de la semana en la que haya actividad programada (los desayunos se hacen siempre los sábados). Ese día se publica, tanto en la comunidad de WhatsApp como en las redes sociales, un formulario de inscripción al que basta con rellenar para participar. (01_faq_dni.txt; 07_desayunos_logistica.txt)",
+        "ground_truth": "Para apuntarse a los desayunos solidarios hay que esperar al miércoles, cuando se publica el formulario de inscripción por la comunidad de WhatsApp y redes sociales. Es una actividad puntual y no obliga a asistir siempre.",
+        "ragas": {
+          "faithfulness": 0.185,
+          "answer_relevancy": 0.606,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q3",
+        "pregunta": "¿En qué se diferencian RESIS y COLES?",
+        "categoria": "comparativa",
+        "respuesta": "**RESIS (actividades con los abuelitos)**  \n- **Público al que se dirige:** Personas mayores que viven en la residencia L'Acollida, normalmente con buena salud física y mental (16_resis_49_preguntas.txt).  \n- **Lugar:** Residencia L'Acollida, calle Crevillente 22, Valencia (11_horarios_ubicaciones.txt).  \n- **Horario habitual:** Todos los miércoles de 17:30 a 18:30 h (11_horarios_ubicaciones.txt).  \n- **Tipo de actividades:** Encuentros semanales de conversación y juegos, además de actividades puntuales como visitas a Fallas, museos o conciertos (16_resis_49_preguntas.txt).  \n- **Número aproximado de participantes:** Entre 10 y 15 abuelitos asisten regularmente (16_resis_49_preguntas.txt).\n\n**COLES (refuerzo escolar)**  \n- **Público al que se dirige:** Niños que asisten al CEIP Antonio Ferrandis y que viven realidades difíciles (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Lugar:** CEIP Antonio Ferrandis, La Coma, Valencia (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Horario:** No se especifica un horario fijo en el contexto disponible.  \n- **Tipo de actividades:** Clases de repaso de deberes o conceptos, lectura de cuentos, realización de manualidades y otras dinámicas educativas adaptadas a la edad (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Número de participantes:** No se indica en el contexto.\n\n**Principales diferencias**  \n\n| Aspecto | RESIS | COLES |\n|---|---|---|\n| **Beneficiarios** | Abuelitos (residentes) | Niños en situación vulnerable |\n| **Entorno** | Residencia L'Acollida (Valencia) | CEIP Antonio Ferrandis (La Coma, Valencia) |\n| **Horario regular** | Miércoles 17:30‑18:30 | No especificado |\n| **Actividades principales** | Socialización, visitas culturales, juegos adaptados a mayores | Refuerzo académico, lectura, manualidades |\n| **Número de participantes** | 10‑15 residentes | No especificado |\n\nEn resumen, RESIS se centra en el acompañamiento y ocio de personas mayores en una residencia, mientras que COLES está orientado al apoyo educativo de niños en un colegio. (Fuentes: 06_coles_refuerzo.txt, 01_faq_dni.txt, 11_horarios_ubicaciones.txt, 16_resis_49_preguntas.txt)",
+        "ground_truth": "COLES es refuerzo escolar con niños en situación vulnerable, con actividades como repaso, lectura y manualidades. RESIS consiste en actividades y acompañamiento con personas mayores en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.427,
+          "answer_relevancy": 0.87,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q4",
+        "pregunta": "¿Qué se hace en el refuerzo escolar?",
+        "categoria": "coles",
+        "respuesta": "En el refuerzo escolar los voluntarios van al CEIP Antonio Ferrandis de la Coma (Valencia) y ayudan a niños que viven realidades difíciles. Según la edad, la labor consiste en:\n\n- Clases de repaso de deberes o de conceptos académicos.  \n- Lectura de cuentos.  \n- Realización de manualidades y otras actividades lúdicas.  \n\n(06_coles_refuerzo.txt)",
+        "ground_truth": "En el refuerzo escolar se ayuda a niños que viven realidades difíciles mediante repaso de deberes o conceptos, lectura de cuentos y manualidades.",
+        "ragas": {
+          "faithfulness": 0.228,
+          "answer_relevancy": 0.864,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q5",
+        "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+        "categoria": "resis",
+        "respuesta": "Los miércoles, de 17:30 h a 18:30 h. (01_faq_dni.txt; 11_horarios_ubicaciones.txt)",
+        "ground_truth": "Las actividades con los abuelitos se realizan los miércoles de 17:30 a 18:30 en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.043,
+          "answer_relevancy": 0.375,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q6",
+        "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+        "categoria": "desayunos",
+        "respuesta": "La diferencia principal está en la hora y en los alimentos que se sirven:  \n\n- **Desayuno solidario**: se realiza por la mañana (generalmente entre 9:00 y 12:00 h) y se lleva café, zumos, bollería y algo de fruta.  \n- **Cena solidaria**: se lleva a cabo por la tarde/noche y se reparte bocadillos y fruta.  \n\n(Fuente: [15_desayunos_100_preguntas.txt])",
+        "ground_truth": "La diferencia principal es la hora y los alimentos: en desayunos se lleva café, zumos y bollería; en cenas, bocadillos y fruta.",
+        "ragas": {
+          "faithfulness": 0.12,
+          "answer_relevancy": 0.722,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q7",
+        "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.023,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      },
+      {
+        "id": "q8",
+        "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.017,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      }
+    ],
+    "medias_ragas": {
+      "faithfulness": 0.133,
+      "answer_relevancy": 0.685,
+      "context_precision": 0.602,
+      "context_recall": 1.0
+    }
+  },
+  "qwen": {
+    "num_preguntas": 8,
+    "resultados_por_pregunta": [
+      {
+        "id": "q1",
+        "pregunta": "¿Qué es DNI?",
+        "categoria": "general",
+        "respuesta": "Estoy listo para actuar como asistente de DNI Valencia. Por favor, indícame tu pregunta concreta. Una vez que la formule, responderé exclusivamente con la información contenida en las fuentes proporcionadas, citando siempre el archivo correspondiente y siguiendo todas las reglas establecidas.",
+        "ground_truth": "DNI es una asociación juvenil de voluntariado en Valencia que desarrolla proyectos sociales como desayunos solidarios, actividades con personas mayores y refuerzo escolar.",
+        "ragas": {
+          "faithfulness": 0.214,
+          "answer_relevancy": 0.391,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q2",
+        "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+        "categoria": "desayunos",
+        "respuesta": "Para apuntarte a los desayunos solidarios, ten en cuenta lo siguiente:\n- La actividad se realiza siempre los sábados. Si ese sábado hay actividad, el miércoles se publica un formulario de inscripción en la comunidad de WhatsApp y por las redes sociales (01_faq_dni.txt; 07_desayunos_logistica.txt).\n- Además, son lo que en DNI llamamos \"actividades puntuales\", por lo que puedes apuntarte un solo día sin la necesidad de asistir a las próximas ediciones (01_faq_dni.txt; 07_desayunos_logistica.txt).\n\n¡Esperamos que te unas!",
+        "ground_truth": "Para apuntarse a los desayunos solidarios hay que esperar al miércoles, cuando se publica el formulario de inscripción por la comunidad de WhatsApp y redes sociales. Es una actividad puntual y no obliga a asistir siempre.",
+        "ragas": {
+          "faithfulness": 0.304,
+          "answer_relevancy": 0.727,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q3",
+        "pregunta": "¿En qué se diferencian RESIS y COLES?",
+        "categoria": "comparativa",
+        "respuesta": "Basándome en la información disponible, aquí tienes las diferencias entre ambos proyectos:\n\n**COLES (Refuerzo escolar)**\n- **En qué consiste:** Se trata de ir a un colegio a ayudar a niños que viven realidades difíciles. Las actividades varían según la edad del alumnado e incluyen repaso de deberes, explicación de conceptos, lectura de cuentos y realización de manualidades, entre otras.\n- **Ubicación:** Se realiza en el CEIP Antonio Ferrandis de la Coma, Valencia.\n*(Fuente: [06_coles_refuerzo.txt], [01_faq_dni.txt])*\n\n**RESIS (Actividades con residencias)**\n- **En qué consiste:** Consiste en realizar actividades semanales con personas mayores en una residencia, centrándose en aquellos abuelitos que se encuentran en mejor estado de salud física y mental. Además de la actividad semanal, se organizan actividades puntuales como ver Fallas, ir a museos o conciertos. Suelen asistir entre 10 y 15 abuelitos.\n- **Cuándo y dónde:** Se realiza todos los miércoles de 17:30 a 18:30 h en la residencia L'Acollida (calle Crevillente 22, cerca de la Avenida Blasco Ibáñez en Valencia).\n*(Fuente: [11_horarios_ubicaciones.txt], [16_resis_49_preguntas.txt])*\n\nEn resumen, la diferencia principal radica en el público y el entorno: **COLES** se enfoca en el apoyo educativo y lúdico con **niños** dentro de un **colegio**, mientras que **RESIS** se centra en la compañía y actividades sociales con **personas mayores** dentro de una **residencia**.",
+        "ground_truth": "COLES es refuerzo escolar con niños en situación vulnerable, con actividades como repaso, lectura y manualidades. RESIS consiste en actividades y acompañamiento con personas mayores en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.481,
+          "answer_relevancy": 0.652,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q4",
+        "pregunta": "¿Qué se hace en el refuerzo escolar?",
+        "categoria": "coles",
+        "respuesta": "En el refuerzo escolar (COLES) se acude a un colegio para ayudar a niños que viven realidades difíciles. Dependiendo de la edad de los menores, las actividades se centran en el repaso de deberes o conceptos, la lectura de cuentos o la realización de manualidades, entre otras dinámicas (06_coles_refuerzo.txt).",
+        "ground_truth": "En el refuerzo escolar se ayuda a niños que viven realidades difíciles mediante repaso de deberes o conceptos, lectura de cuentos y manualidades.",
+        "ragas": {
+          "faithfulness": 0.208,
+          "answer_relevancy": 0.864,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q5",
+        "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+        "categoria": "resis",
+        "respuesta": "Las actividades con los abuelitos se realizan todos los miércoles de 17:30 a 18:30 de la tarde (01_faq_dni.txt; 11_horarios_ubicaciones.txt).",
+        "ground_truth": "Las actividades con los abuelitos se realizan los miércoles de 17:30 a 18:30 en la residencia L'Acollida.",
+        "ragas": {
+          "faithfulness": 0.106,
+          "answer_relevancy": 0.812,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q6",
+        "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+        "categoria": "desayunos",
+        "respuesta": "La diferencia principal entre ambas actividades se centra en la hora y el tipo de alimentos que repartimos:\n\n- **Desayuno solidario**: Se realiza por la mañana temprano, típicamente entre las 9:00 y las 12:00 h (11_horarios_ubicaciones.txt). En esta actividad llevamos café, zumos y bollería (15_desayunos_100_preguntas.txt).\n- **Cena solidaria**: En esta actividad repartimos bocadillos y fruta (15_desayunos_100_preguntas.txt).\n\nAdemás, puedes elegir libremente a qué turno apuntarte cada semana según tu disponibilidad (15_desayunos_100_preguntas.txt). ¡Cualquiera de las dos opciones es una gran manera de acompañar y sumar!",
+        "ground_truth": "La diferencia principal es la hora y los alimentos: en desayunos se lleva café, zumos y bollería; en cenas, bocadillos y fruta.",
+        "ragas": {
+          "faithfulness": 0.217,
+          "answer_relevancy": 0.667,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": null
+        }
+      },
+      {
+        "id": "q7",
+        "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.023,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      },
+      {
+        "id": "q8",
+        "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
+        "categoria": "fuera_de_ambito",
+        "respuesta": "No tengo esa información en mis fuentes.",
+        "ground_truth": "No tengo esa información en mis fuentes.",
+        "ragas": {
+          "faithfulness": 0.017,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        "metricas_propias": {
+          "precision_fuentes_esperadas": 1.0,
+          "rechazo_fuera_de_ambito_correcto": true
+        }
+      }
+    ],
+    "medias_ragas": {
+      "faithfulness": 0.196,
+      "answer_relevancy": 0.764,
+      "context_precision": 0.602,
+      "context_recall": 1.0
+    }
+  }
+}
