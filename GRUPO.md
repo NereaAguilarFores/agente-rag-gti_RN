@@ -1,24 +1,27 @@
-# Grupo de prácticas
-
-> Plantilla. Rellenadla con vuestros datos al entregar.
+# Grupo de practicas
 
 ## Integrantes
 
 | Apellidos, Nombre | DNI | Correo UPV | Grado/Curso |
 |---|---|---|---|
-| Aguilar Forés, Nerea | 54020406F | nagufor@upv.edu.es | GTI / 3º |
-| Espinoza Cervera, Judit | 12345678X | usuario@alumni.upv.es | GTI / 3º |
+| Aguilar Fores, Nerea | 54020406F | nagufor@upv.edu.es | GTI / 3 |
+| Espinoza Cervera, Judit | 26578204W | jespcer@upv.edu.es | GTI / 3 |
+
 
 ## Reparto de trabajo
 
-Resumen honesto de quién hizo qué. No hace falta dividir al 50% exacto, pero
-sí queremos saber qué firmasteis cada uno (esto se cruza con `AI_USAGE.md`
-y con la presentación oral).
+| Integrante | Trabajo realizado |
+|---|---|
+| Nerea Aguilar Fores | Desarrollo y pruebas del pipeline RAG; ajustes de prompt; benchmark con modelos locales y PoliGPT; analisis de resultados; revision de calidad de respuestas. |
+| Judit Espinoza Cervera | Revision documental; limpieza de referencias de plantilla; README; AI_USAGE; GRUPO; informe; organizacion de pruebas y benchmark para la entrega. |
 
-- **Persona 1**: pipeline RAG, scripts de indexación, ...
-- **Persona 2**: contrato de interfaz, tests, evaluación, ...
+## Resumen de responsabilidades
+
+- Implementacion del agente RAG: carga de corpus, chunking, embeddings, ChromaDB, retrieval, prompt y generacion.
+- Evaluacion: pruebas iterativas, benchmark de 4 modelos, comparacion de calidad y latencia.
+- Documentacion: README, informe, declaracion de uso de IA, grupo, benchmark y registro de decisiones.
 
 ## Convocatoria
 
-- Entrega: <fecha>
-- Oral en clase: <fecha>
+- Entrega: 30/05/2026.
+- Oral en clase: por confirmar por el profesorado.

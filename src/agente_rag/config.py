@@ -47,7 +47,7 @@ class Settings:
             embed_model=os.getenv("EMBED_MODEL", "nomic-embed-text"),
             verify_ssl=_bool("VERIFY_SSL", True),
             chroma_path=Path(os.getenv("CHROMA_PATH", str(repo_root / "data" / "chroma"))),
-            collection_name=os.getenv("COLLECTION_NAME", "gti_orienta"),
+            collection_name=os.getenv("COLLECTION_NAME", "dni_valencia"),
             api_host=os.getenv("API_HOST", "127.0.0.1"),
             api_port=int(os.getenv("API_PORT", "8000")),
             corpus_dir=Path(os.getenv("CORPUS_DIR", str(repo_root / "corpus"))),

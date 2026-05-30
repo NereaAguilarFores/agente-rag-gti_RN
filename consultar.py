@@ -5,7 +5,7 @@ enunciado §9. No la cambies de sitio ni le añadas argumentos posicionales:
 si rompe el contrato, la nota es 0 automáticamente.
 
 Uso manual desde CLI:
-    python consultar.py "¿Hay una asignatura sobre videojuegos en GTI?"
+    python consultar.py "¿Cómo me apunto a los desayunos solidarios?"
 """
 
 from __future__ import annotations

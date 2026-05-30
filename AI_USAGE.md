@@ -1,34 +1,67 @@
-# AI_USAGE.md — uso honesto de asistentes de IA
+# Uso de asistentes de IA
 
-> Plantilla obligatoria. Rellenadla con la verdad. **No penaliza usar IA**;
-> penaliza mentir sobre el uso (ver enunciado §6 y rúbrica).
+Este documento declara de forma honesta las herramientas de IA usadas durante la practica y en que partes ayudaron. Todo el codigo y la documentacion entregados han sido revisados por las integrantes del grupo.
 
-## ¿Qué herramientas habéis usado?
+## Herramientas usadas
 
-- [X] ChatGPT (GPT-4 / GPT-5 / o3 / ...)
-- [ ] Claude (Sonnet / Opus / ...)
-- [ ] GitHub Copilot
-- [ ] Cursor / Windsurf / IDE con asistente integrado
-- [ ] Gemini
-- [X] Ollama local con modelos abiertos
-- [ ] Otras: ...
+- [X] ChatGPT / Codex.
+- [ ] Claude.
+- [ ] GitHub Copilot.
+- [ ] Cursor / Windsurf / IDE con asistente integrado.
+- [ ] Gemini.
+- [X] Ollama local con modelos abiertos.
+- [X] PoliGPT UPV para evaluacion comparativa.
+- [ ] Otras.
 
-## ¿En qué partes os ha ayudado?
+## Uso de ChatGPT / Codex
 
-Sed específicos. Ejemplos de declaración honesta:
+ChatGPT/Codex se uso como apoyo en:
 
-- **Instalación y ejecución**: ChatGPT nos guió en la instalación de dependencias, Ollama y modelos locales.
-- **Comprensión del proyecto**: ChatGPT nos ayudó a entender la estructura general del sistema RAG: `chunker`, `retriever`, `generator`, `prompts` y `pipeline`.
-- **Debugging**: ChatGPT nos ayudó a interpretar errores durante la ejecución y a localizar posibles problemas de configuración.
-- **Documentación**: ChatGPT nos ayudó a redactar partes iniciales de la documentación, revisadas posteriormente por nosotras.
-- **Ollama local**: se ha usado como servidor local de modelos para ejecutar el agente, tal como pide la práctica
+- Comprension de la estructura del agente RAG: separacion entre `chunker`, `retriever`, `generator`, `prompts` y `pipeline`.
+- Revision de errores de ejecucion e instalacion de dependencias.
+- Ayuda para redactar y reorganizar documentacion de entrega.
+- Apoyo en la interpretacion de resultados de pruebas y benchmark.
+- Revision de referencias antiguas de la plantilla original para adaptarlas al caso DNI Valencia.
 
-## NO usado para
+Las propuestas generadas por IA fueron revisadas manualmente antes de incorporarse al proyecto.
+
+## Uso de Ollama local
+
+Ollama se uso para:
+
+- Generar embeddings mediante `nomic-embed-text`.
+- Ejecutar modelos locales para responder preguntas del agente.
+- Evaluar modelos locales en el benchmark, especialmente `llama3.2:3b` y `qwen2.5:3b`.
+
+## Uso de PoliGPT
+
+PoliGPT se uso para comparar el comportamiento del sistema con modelos externos disponibles en la infraestructura UPV:
+
+- `poligpt`.
+- `qwen`.
+
+Se registraron resultados de calidad, latencia, tokens de entrada/salida y observaciones cualitativas.
+
+## Partes revisadas por el grupo
+
+- Prompt anti-alucinacion.
+- Respuestas sobre RESIS, COLES y desayunos solidarios.
+- Ficheros de benchmark.
+- Documentacion obligatoria de entrega.
+- Declaracion de bandas en `features.json`.
+
+## No usado para
+
+- No se uso IA para inventar resultados de benchmark.
+- No se uso IA para inventar resultados RAGAs.
+- No se uso IA para modificar el corpus oficial.
+- No se subieron claves privadas ni secretos a asistentes externos.
 
 ## Compromiso
 
-Hemos leído y entendido todo el código que hemos entregado. En la presentación
-oral en directo seremos capaces de defender cualquier línea que el profesor
-nos señale. Si no podemos defender una decisión, asumimos que la nota baja.
+Hemos leido y entendido el codigo y la documentacion que entregamos. En la defensa oral podremos explicar el flujo del agente, las decisiones tomadas y las limitaciones del sistema.
 
-Firma (digital, escribiendo el nombre): Nerea Aguilar Forés y
+Firma digital:
+
+- Nerea Aguilar Fores.
+- Judit Espinoza Cervera.

@@ -1,5 +1,5 @@
 {
-  "_": "Plantilla declarativa que el corrector lee primero.",
+  "_": "Declaracion de capacidades implementadas para la entrega del agente RAG de DNI Valencia.",
   "interfaz": "modulo_python",
   "modulo": "consultar.py",
   "endpoint_http": null,

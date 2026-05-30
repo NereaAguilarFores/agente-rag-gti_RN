@@ -1,125 +1,199 @@
-# Agente RAG — repo-ejemplo (caso GTI Orienta)
+# Agente RAG para DNI Valencia
 
-> Repo de **referencia** para la práctica del Asistente DNI de la asignatura
-> *Inteligencia Artificial* (3º GTI, UPV). **Léelo como ejemplo de cómo
-> entregar**, no como plantilla a forkear: el caso (GTI Orienta) es distinto
-> al que vais a entregar (DNI Valencia).
+Proyecto de la practica de Inteligencia Artificial: un agente RAG que responde preguntas sobre la asociacion DNI Valencia usando el corpus oficial de 16 ficheros de texto.
 
-## ¿Por qué este repo es un ejemplo y no la solución?
+El sistema recupera fragmentos relevantes del corpus, construye un prompt con contexto, genera una respuesta con un LLM y devuelve siempre las fuentes usadas. Cuando la informacion no aparece en el corpus, debe responder con la frase de rechazo configurada: `No tengo esa informacion en mis fuentes`.
 
-| Eje | Práctica oficial | Este repo |
-|---|---|---|
-| Caso | Asociación DNI Valencia | Orientación académica GTI |
-| Corpus | 16 `.txt` (se os entrega) | 4 `.txt` (uno por curso del grado GTI) |
-| Banda | Vosotros decidís hasta dónde llegáis | 5 + 6 + 7 implementadas, hexagonal **NO** |
+## Estado de la entrega
 
-El **patrón** (chunking, embeddings, retrieval, prompt anti-alucinación,
-cita de fuentes, métricas) es el mismo. El **dominio** es distinto. Eso
-permite que copiéis la **estructura** sin copiar la **solución**.
+Capacidades documentadas en esta version:
 
-## Arranque en menos de 5 minutos
+- Banda 5: pipeline RAG completo con chunking, embeddings, vector store, retrieval, LLM y prompt anti-alucinacion.
+- Banda 6: cita de archivos fuente en cada respuesta.
+- Banda 7: benchmark comparativo con 4 modelos: `llama3.2:3b`, `qwen2.5:3b`, `poligpt` y `qwen`.
+- Banda 8: evaluacion RAGAs documentada y dos metricas propias en `evaluacion/`.
+- Banda 10: no implementada; la arquitectura actual es single-agent modular, no hexagonal.
+
+El fichero [features.json](features.json) declara las bandas que se entregan realmente.
+
+## Requisitos
+
+- Python 3.11 o superior.
+- Ollama instalado y en ejecucion.
+- Modelo de embeddings `nomic-embed-text`.
+- Al menos un modelo local para consultas, por ejemplo `llama3.2:3b` o `qwen2.5:3b`.
+- Para benchmark con PoliGPT: clave de API y VPN/red UPV cuando sea necesario.
+
+Instalacion recomendada:
 
 ```bash
-# 1. Clonar y entrar
-git clone <este-repo>
-cd agente-rag-gti
-
-# 2. Instalar (Python 3.11+)
-python -m venv .venv && source .venv/bin/activate
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
-
-# 3. Tener Ollama corriendo y los dos modelos disponibles
-#    (en local. Para probar contra UPV ver .env.example)
-ollama pull gemma2:27b
 ollama pull nomic-embed-text
-
-# 4. Construir el índice (~ 30-90 s)
-python scripts/build_index.py
-
-# 5. Lanzar una consulta
-python consultar.py "¿Hay una asignatura sobre videojuegos en GTI?"
+ollama pull llama3.2:3b
+ollama pull qwen2.5:3b
 ```
 
-Salida (resumida):
+## Configuracion
+
+Copiar `.env.example` a `.env` si se quiere cambiar la configuracion por defecto:
+
+```bash
+copy .env.example .env
+```
+
+Variables principales:
+
+- `OLLAMA_URL`: endpoint de Ollama, por defecto `http://localhost:11434/api`.
+- `LLM_MODEL`: modelo generador usado por defecto.
+- `EMBED_MODEL`: modelo de embeddings.
+- `CHROMA_PATH`: ruta donde se guarda el indice persistente de ChromaDB.
+- `COLLECTION_NAME`: nombre de la coleccion vectorial.
+- `POLIGPT_BASE_URL`, `POLIGPT_API_KEY` y `POLIGPT_MODEL`: necesarias si se usa PoliGPT.
+
+## Uso
+
+Construir el indice vectorial:
+
+```bash
+python scripts/build_index.py
+```
+
+Lanzar una consulta desde consola:
+
+```bash
+python consultar.py "Como me apunto a los desayunos solidarios?"
+```
+
+La funcion obligatoria del contrato esta en la raiz del repositorio:
+
+```python
+from consultar import consultar
+
+salida = consultar("En que se diferencian RESIS y COLES?")
+```
+
+La salida tiene esta forma:
 
 ```json
 {
-  "respuesta": "Sí. En 4º se imparte 'Desarrollo de Videojuegos' (4_cuarto.txt)...",
-  "fuentes": ["4_cuarto.txt", "3_tercero.txt"],
-  "chunks": [...],
-  "metricas": {"prompt_tokens": 612, "output_tokens": 45, "tokens_per_sec": 38.2, "latencia_s": 1.7, "modelo": "gemma2:27b"}
+  "respuesta": "Texto de la respuesta con fuente citada.",
+  "fuentes": ["06_coles_refuerzo.txt", "16_resis_49_preguntas.txt"],
+  "chunks": [
+    {
+      "source": "06_coles_refuerzo.txt",
+      "text": "...",
+      "score": 0.82
+    }
+  ],
+  "metricas": {
+    "prompt_tokens": 612,
+    "output_tokens": 90,
+    "tokens_per_sec": 42.1,
+    "latencia_s": 2.4,
+    "modelo": "llama3.2:3b"
+  },
+  "trazas": null
 }
 ```
 
-## Estructura del repositorio
+Tambien existe una opcion HTTP con FastAPI:
 
-```
-agente-rag-gti/
-├── consultar.py          # CONTRATO §9 opción A (módulo Python)
-├── api.py                # CONTRATO §9 opción B (POST /query con FastAPI)
-├── features.json         # Declaración para el corrector — SIN ESTO LA NOTA ES 0
-├── GRUPO.md              # Plantilla equipo
-├── AI_USAGE.md           # Plantilla declaración de uso de IA
-├── corpus/               # 4 .txt (1º a 4º curso de GTI)
-├── src/agente_rag/       # Pipeline RAG modular (chunker, retriever, generator, ...)
-├── scripts/
-│   ├── build_index.py    # Construye índice ChromaDB persistente
-│   └── run_eval.py       # Ejecuta el benchmark
-├── tests/                # pytest sin dependencia de red (mocks de Ollama)
-├── benchmark/
-│   ├── preguntas.json    # 8 preguntas tipo (incluye 2 fuera-de-ámbito)
-│   └── README.md         # Cómo evaluar resultados
-├── docs/
-│   ├── ARCHITECTURE.md   # Decisiones de diseño y por qué
-│   └── CONTRACT.md       # Contrato de interfaz al detalle
-└── .github/workflows/ci.yml   # Tests + lint en cada push
+```bash
+uvicorn api:app --host 127.0.0.1 --port 8000
 ```
 
-## Bandas implementadas
+Endpoint:
 
-- **Banda 5** ✓ — pipeline RAG con prompt anti-alucinación.
-- **Banda 6** ✓ — cada respuesta cita el archivo fuente.
-- **Banda 7** parcial — el contrato emite `chunks` y `metricas` (tokens,
-  tokens/s, latencia). **Falta** el benchmark con 4 modelos: lo dejamos a
-  los alumnos para que midan tradeoffs reales.
-- **Banda 8** — no implementada. Sería integrar RAGAs sobre los outputs
-  de `scripts/run_eval.py`.
-- **Banda 10** — *deliberadamente no implementada*. El reto del 10 es
-  refactorizar este single-agent a hexagonal (ver `manual_desarrollador_dni.pdf`
-  sección 4). Si os lo damos hecho, regalamos la nota máxima.
+```http
+POST /query
+```
+
+## Estructura
+
+```text
+.
+|-- consultar.py              # contrato principal de la practica
+|-- api.py                    # endpoint HTTP opcional
+|-- features.json             # declaracion de bandas y extras
+|-- AI_USAGE.md               # uso de IA durante el desarrollo
+|-- GRUPO.md                  # integrantes y reparto de trabajo
+|-- corpus/                   # 16 documentos oficiales de DNI Valencia
+|-- src/agente_rag/           # implementacion modular del agente
+|   |-- chunker.py            # carga y troceo del corpus
+|   |-- embedder.py           # cliente de embeddings
+|   |-- retriever.py          # ChromaDB y recuperacion semantica
+|   |-- prompts.py            # prompt anti-alucinacion
+|   |-- generator.py          # generacion con Ollama o PoliGPT
+|   `-- pipeline.py           # orquestacion de la consulta
+|-- scripts/
+|   |-- build_index.py        # genera el indice vectorial
+|   `-- run_eval.py           # ejecuta el benchmark
+|-- benchmark/                # preguntas y resultados de benchmark
+|-- pruebas/                  # registro de pruebas iterativas
+|-- docs/                     # arquitectura y contrato
+`-- tests/                    # tests unitarios del contrato
+```
+
+## Funcionamiento interno
+
+El flujo de una consulta es:
+
+1. El usuario llama a `consultar(pregunta)`.
+2. `pipeline.answer` pide al retriever los chunks mas relevantes.
+3. `retriever.retrieve` convierte la pregunta en embedding y consulta ChromaDB.
+4. `prompts.build_prompt` inserta los chunks recuperados en un prompt con reglas anti-alucinacion.
+5. `generator.generate` llama al modelo configurado.
+6. El pipeline devuelve respuesta, fuentes, chunks y metricas.
+
+El sistema usa `RecursiveCharacterTextSplitter` con `chunk_size=500` y `chunk_overlap=100`, una configuracion recomendada para mantener contexto suficiente sin inflar demasiado el prompt.
+
+## Benchmark
+
+El benchmark usa un conjunto fijo de 8 preguntas, con casos generales, preguntas sobre desayunos, comparaciones entre RESIS y COLES, preguntas de proyectos concretos y preguntas fuera de ambito.
+
+Modelos evaluados:
+
+- `llama3.2:3b` en Ollama local.
+- `qwen2.5:3b` en Ollama local.
+- `poligpt` en PoliGPT UPV.
+- `qwen` en PoliGPT UPV.
+
+Resultados y analisis:
+
+- [benchmark/benchmark.md](benchmark/benchmark.md)
+- [benchmark/benchmark.json](benchmark/benchmark.json)
+- [benchmark/preguntas.json](benchmark/preguntas.json)
+- [evaluacion/ragas_results.json](evaluacion/ragas_results.json)
+- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md)
+
+La conclusion principal es que los modelos PoliGPT generan respuestas mas completas y estructuradas, pero con mas latencia; `qwen2.5:3b` ofrece buen equilibrio local; `llama3.2:3b` funciona correctamente pero presenta mas limitaciones en sintesis compleja.
 
 ## Tests
+
+Los tests comprueban el contrato sin llamar al LLM real:
 
 ```bash
 pytest -q
 ```
 
-Los tests **no llaman a Ollama**: parchean `retrieve` y `generate` con stubs
-para verificar que el contrato (`{respuesta, fuentes, chunks, metricas, trazas}`)
-se respeta y que el `features.json` declara coherentemente lo que entrega.
+Nota: el entorno debe tener instaladas todas las dependencias de `requirements.txt`, incluida `openai`, porque el generador soporta tambien PoliGPT.
 
-## Por qué este repo está bien estructurado (lo que queremos que copiéis)
+## Limitaciones conocidas
 
-1. **Separación clara `src/` ↔ `consultar.py`/`api.py`**. La lógica vive en
-   el paquete, los puntos de entrada son finos. Si mañana queremos meter
-   un Streamlit (extra +1.5), es otro fichero más, no un refactor.
-2. **`features.json` válido y honesto**. Marca `true` solo lo que
-   funciona. Los alumnos que declaren `banda7=true` sin `benchmark/` se
-   detectan en el corrector.
-3. **Tests aislados de red**. CI corre en GitHub Actions sin Ollama.
-4. **Conventional commits granulares**. Mira `git log --oneline`: cada
-   commit toca una capa, no hay un commit-monstruo "lo subo todo".
-5. **Cita de fuentes literal en el prompt** (`prompts.py`). La banda 6 se
-   gana en el prompt, no en el postproceso.
+- La arquitectura no es hexagonal; el dominio aun depende de modulos concretos de infraestructura.
+- El retrieval es semantico con ChromaDB, sin BM25 ni re-ranking.
+- El sistema puede ser conservador en preguntas generales cuando el contexto recuperado es parcial.
+- Las respuestas de modelos pequenos pueden mezclar informacion o sintetizar peor en preguntas comparativas.
+- Los resultados RAGAs se calculan sobre runs reales de los 4 modelos declarados. Los runs locales se regeneraron con Ollama el 2026-05-30 y los runs PoliGPT se incorporaron desde los resultados guardados por el equipo.
 
-## Avisos legales y éticos
+## Documentacion adicional
 
-- Modelo y corpus son material docente. No lo redistribuyáis fuera del aula
-  sin autorización del profesor.
-- Si añadís `boto3`/AWS Rekognition, **rotad credenciales** después.
-  Ningún `.env` con secretos debe llegar a un repo público.
-
-## Créditos
-
-Vicente Rivas Monferrer & Juan M. Alberola — Universitat Politècnica de
-València, 2026.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): decisiones tecnicas.
+- [docs/CONTRACT.md](docs/CONTRACT.md): contrato de interfaz.
+- [benchmark/README.md](benchmark/README.md): organizacion del benchmark.
+- [evaluacion/ragas_results.json](evaluacion/ragas_results.json): metricas RAGAs consolidadas.
+- [evaluacion/metricas_propias.md](evaluacion/metricas_propias.md): dos metricas propias.
+- [informe.md](informe.md): informe editable.
+- `informe.pdf`: version PDF para entrega, si se genera desde el informe.

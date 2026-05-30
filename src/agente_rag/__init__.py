@@ -1,4 +1,4 @@
-"""Agente RAG — repo-ejemplo del Asistente DNI (caso GTI Orienta).
+"""Agente RAG para el Asistente DNI Valencia.
 
 Estructura del paquete:
 - config: variables de entorno y constantes.

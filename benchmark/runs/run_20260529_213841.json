@@ -1,0 +1,430 @@
+[
+  {
+    "id": "q1",
+    "pregunta": "¿Qué es DNI?",
+    "fuentes_esperadas": [
+      "08_preguntas_basicas.txt",
+      "04_filosofia_dni.txt"
+    ],
+    "categoria": "general",
+    "salida": {
+      "respuesta": "No tengo esa información en mis fuentes.",
+      "fuentes": [
+        "08_preguntas_basicas.txt",
+        "02_presentacion_desayunos.txt",
+        "14_impacto_social.txt",
+        "03_charlas_abuelitos.txt",
+        "04_filosofia_dni.txt"
+      ],
+      "chunks": [
+        {
+          "source": "08_preguntas_basicas.txt",
+          "text": "Q: ¿Cuál es la filosofía de DNI?",
+          "score": 0.7484
+        },
+        {
+          "source": "02_presentacion_desayunos.txt",
+          "text": "DINÁMICA DE TRABAJO",
+          "score": 0.7424
+        },
+        {
+          "source": "14_impacto_social.txt",
+          "text": "### IMPACTO SOCIAL Y TESTIMONIOS ###",
+          "score": 0.6771
+        },
+        {
+          "source": "03_charlas_abuelitos.txt",
+          "text": "CHARLAS CON ABUELITOS - PROYECTO DE RESIDENCIAS\n\nINTRODUCCIÓN",
+          "score": 0.6719
+        },
+        {
+          "source": "04_filosofia_dni.txt",
+          "text": "¿POR QUÉ DNI?\n\nLa pregunta correcta no es qué es DNI, sino por qué DNI. ¿Qué es lo que ha sucedido para que aparezca? ¿Qué intenta conseguir? ¿A quién pretende llegar?",
+          "score": 0.6592
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 504,
+        "output_tokens": 244,
+        "tokens_per_sec": 36.96,
+        "latencia_s": 6.6,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q2",
+    "pregunta": "¿Cómo me apunto a los desayunos solidarios?",
+    "fuentes_esperadas": [
+      "01_faq_dni.txt",
+      "07_desayunos_logistica.txt"
+    ],
+    "categoria": "desayunos",
+    "salida": {
+      "respuesta": "Para apuntarte a los desayunos solidarios debes estar atento al miércoles de la semana en la que haya actividad programada (los desayunos se hacen siempre los sábados). Ese día se publica, tanto en la comunidad de WhatsApp como en las redes sociales, un formulario de inscripción al que basta con rellenar para participar. (01_faq_dni.txt; 07_desayunos_logistica.txt)",
+      "fuentes": [
+        "10_proyectos.txt",
+        "01_faq_dni.txt",
+        "07_desayunos_logistica.txt"
+      ],
+      "chunks": [
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿Cómo funcionan los desayunos solidarios?",
+          "score": 0.9303
+        },
+        {
+          "source": "01_faq_dni.txt",
+          "text": "Q: ¿Cómo me apunto a los desayunos solidarios?\nA: La actividad se realiza siempre los sábados. Si ese sábado hay actividad, el miércoles se publica por la comunidad de WhatsApp y por redes sociales un formulario para inscribirse.\n\nQ: ¿Si me apunto un día a desayunos tengo que ir al resto?\nA: No. Los desayunos y cenas solidarios son lo que en DNI llamamos actividades puntuales: son voluntariados a los que te puedes apuntar un día sin la necesidad de que tengas que ir a las próximas actividades.",
+          "score": 0.9065
+        },
+        {
+          "source": "07_desayunos_logistica.txt",
+          "text": "Q: ¿Cómo me apunto a los desayunos?\nA: La actividad se realiza siempre los sábados. Si ese sábado hay actividad, el miércoles se publica por la comunidad de WhatsApp y por redes sociales un formulario para inscribirse.\n\nQ: ¿Si me apunto un día tengo que ir siempre?\nA: No. Los desayunos y cenas solidarios son lo que en DNI llamamos actividades puntuales: son voluntariados a los que te puedes apuntar un día sin la necesidad de que tengas que ir a las próximas actividades.",
+          "score": 0.8824
+        },
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿Cómo funcionan los desayunos solidarios?\nA: Los desayunos solidarios se realizan casi todas las semanas en zona centro de Valencia. Preparamos bocadillos, café, zumo y algo de fruta, y vamos a zonas donde hay personas sin hogar. Lo más importante NO es solo dar comida, sino sentarnos a conversar con ellos, escucharles, conocer sus historias y hacerles sentir acompañados. Cada desayuno dura unas 2-3 horas. Es una experiencia transformadora que cambia tu perspectiva sobre la exclusión social.",
+          "score": 0.875
+        },
+        {
+          "source": "07_desayunos_logistica.txt",
+          "text": "### LOGÍSTICA DETALLADA DESAYUNOS SOLIDARIOS ###\n\nQ: ¿Qué se hace en la actividad de desayunos solidarios?\nA: La actividad consiste en que un grupo de voluntarios se reúne en un punto de encuentro y se divide en equipos. Cada equipo recorre una zona de Valencia repartiendo desayunos o cenas a personas sin hogar. Lo más importante no es solo la comida, sino el tiempo que se comparte con ellos, ofreciéndoles conversación y compañía.",
+          "score": 0.866
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 862,
+        "output_tokens": 211,
+        "tokens_per_sec": 16.02,
+        "latencia_s": 13.17,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q3",
+    "pregunta": "¿En qué se diferencian RESIS y COLES?",
+    "fuentes_esperadas": [
+      "06_coles_refuerzo.txt",
+      "16_resis_49_preguntas.txt",
+      "11_horarios_ubicaciones.txt"
+    ],
+    "categoria": "comparativa",
+    "salida": {
+      "respuesta": "**RESIS (actividades con los abuelitos)**  \n- **Público al que se dirige:** Personas mayores que viven en la residencia L'Acollida, normalmente con buena salud física y mental (16_resis_49_preguntas.txt).  \n- **Lugar:** Residencia L'Acollida, calle Crevillente 22, Valencia (11_horarios_ubicaciones.txt).  \n- **Horario habitual:** Todos los miércoles de 17:30 a 18:30 h (11_horarios_ubicaciones.txt).  \n- **Tipo de actividades:** Encuentros semanales de conversación y juegos, además de actividades puntuales como visitas a Fallas, museos o conciertos (16_resis_49_preguntas.txt).  \n- **Número aproximado de participantes:** Entre 10 y 15 abuelitos asisten regularmente (16_resis_49_preguntas.txt).\n\n**COLES (refuerzo escolar)**  \n- **Público al que se dirige:** Niños que asisten al CEIP Antonio Ferrandis y que viven realidades difíciles (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Lugar:** CEIP Antonio Ferrandis, La Coma, Valencia (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Horario:** No se especifica un horario fijo en el contexto disponible.  \n- **Tipo de actividades:** Clases de repaso de deberes o conceptos, lectura de cuentos, realización de manualidades y otras dinámicas educativas adaptadas a la edad (06_coles_refuerzo.txt; 01_faq_dni.txt).  \n- **Número de participantes:** No se indica en el contexto.\n\n**Principales diferencias**  \n\n| Aspecto | RESIS | COLES |\n|---|---|---|\n| **Beneficiarios** | Abuelitos (residentes) | Niños en situación vulnerable |\n| **Entorno** | Residencia L'Acollida (Valencia) | CEIP Antonio Ferrandis (La Coma, Valencia) |\n| **Horario regular** | Miércoles 17:30‑18:30 | No especificado |\n| **Actividades principales** | Socialización, visitas culturales, juegos adaptados a mayores | Refuerzo académico, lectura, manualidades |\n| **Número de participantes** | 10‑15 residentes | No especificado |\n\nEn resumen, RESIS se centra en el acompañamiento y ocio de personas mayores en una residencia, mientras que COLES está orientado al apoyo educativo de niños en un colegio. (Fuentes: 06_coles_refuerzo.txt, 01_faq_dni.txt, 11_horarios_ubicaciones.txt, 16_resis_49_preguntas.txt)",
+      "fuentes": [
+        "06_coles_refuerzo.txt",
+        "11_horarios_ubicaciones.txt",
+        "10_proyectos.txt",
+        "01_faq_dni.txt",
+        "16_resis_49_preguntas.txt"
+      ],
+      "chunks": [
+        {
+          "source": "06_coles_refuerzo.txt",
+          "text": "### COLES - REFUERZO ESCOLAR CEIP ANTONIO FERRANDIS ###\n\nQ: ¿Qué se hace en el refuerzo escolar?\nA: En actividades de refuerzo escolar vamos a un colegio a ayudar a niños que viven realidades difíciles. Dependiendo de la edad el voluntariado es más de clases enfocadas al repaso de deberes o de conceptos o a la lectura de cuentos, realización de manualidades etc.\n\nQ: ¿Dónde es el refuerzo escolar?\nA: Es el CEIP Antonio Ferrandis de la Coma Valencia.",
+          "score": 0.8256
+        },
+        {
+          "source": "11_horarios_ubicaciones.txt",
+          "text": "### HORARIOS Y UBICACIONES ###\n\nQ: ¿Cuándo son las actividades con los abuelitos (RESIS)?\nA: Las actividades en la residencia L'Acollida se realizan todos los miércoles de 5:30 a 6:30 de la tarde (17:30-18:30h). La residencia está ubicada en la calle Crevillente 22, cerca de la Avenida Blasco Ibáñez en Valencia. Para confirmar detalles de la próxima sesión, consulta el grupo de WhatsApp o contacta al 962 025 978.",
+          "score": 0.82
+        },
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿En qué consiste el refuerzo escolar (COLES)?",
+          "score": 0.8196
+        },
+        {
+          "source": "01_faq_dni.txt",
+          "text": "===== REFUERZO ESCOLAR (COLES) =====\n\nQ: ¿Qué se hace en el refuerzo escolar?\nA: En actividades de refuerzo escolar vamos a un colegio a ayudar a niños que viven realidades difíciles. Dependiendo de la edad, el voluntariado es más de clases enfocadas al repaso de deberes o de conceptos, o a la lectura de cuentos, realización de manualidades, etc.\n\nQ: ¿Dónde es el refuerzo escolar?\nA: Es en el CEIP Antonio Ferrandis de la Coma, Valencia.",
+          "score": 0.8103
+        },
+        {
+          "source": "16_resis_49_preguntas.txt",
+          "text": "Q: ¿Solo se hacen actividades en la residencia o se hacen más cosas?\nA: Además de la actividad semanal, hay actividades puntuales (ej. ver Fallas, museos, conciertos).\n\nQ: ¿Qué tipo de condiciones tienen los residentes?\nA: Los voluntarios se enfocan en los abuelitos que mejor están de salud física y mental.\n\nQ: ¿Cuántos abuelitos tenemos que atender?\nA: Suelen asistir entre 10 y 15 abuelitos, aunque no todos participan activamente.",
+          "score": 0.8078
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 883,
+        "output_tokens": 878,
+        "tokens_per_sec": 15.02,
+        "latencia_s": 58.45,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q4",
+    "pregunta": "¿Qué se hace en el refuerzo escolar?",
+    "fuentes_esperadas": [
+      "06_coles_refuerzo.txt",
+      "01_faq_dni.txt"
+    ],
+    "categoria": "coles",
+    "salida": {
+      "respuesta": "En el refuerzo escolar los voluntarios van al CEIP Antonio Ferrandis de la Coma (Valencia) y ayudan a niños que viven realidades difíciles. Según la edad, la labor consiste en:\n\n- Clases de repaso de deberes o de conceptos académicos.  \n- Lectura de cuentos.  \n- Realización de manualidades y otras actividades lúdicas.  \n\n(06_coles_refuerzo.txt)",
+      "fuentes": [
+        "10_proyectos.txt",
+        "06_coles_refuerzo.txt",
+        "11_horarios_ubicaciones.txt",
+        "01_faq_dni.txt"
+      ],
+      "chunks": [
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿En qué consiste el refuerzo escolar (COLES)?",
+          "score": 0.9261
+        },
+        {
+          "source": "06_coles_refuerzo.txt",
+          "text": "### COLES - REFUERZO ESCOLAR CEIP ANTONIO FERRANDIS ###\n\nQ: ¿Qué se hace en el refuerzo escolar?\nA: En actividades de refuerzo escolar vamos a un colegio a ayudar a niños que viven realidades difíciles. Dependiendo de la edad el voluntariado es más de clases enfocadas al repaso de deberes o de conceptos o a la lectura de cuentos, realización de manualidades etc.\n\nQ: ¿Dónde es el refuerzo escolar?\nA: Es el CEIP Antonio Ferrandis de la Coma Valencia.",
+          "score": 0.891
+        },
+        {
+          "source": "11_horarios_ubicaciones.txt",
+          "text": "Q: ¿Dónde es el refuerzo escolar (COLES)?\nA: El refuerzo escolar (COLES) se realiza en una biblioteca tutorizada en Valencia. La ubicación exacta y los horarios (generalmente tardes entre semana) te los facilitamos cuando te apuntas al proyecto, ya que requiere un compromiso más regular y queremos que sea accesible para tu zona. Si te interesa, contacta al 647 440 275 y te damos todos los detalles específicos.",
+          "score": 0.8795
+        },
+        {
+          "source": "01_faq_dni.txt",
+          "text": "Q: ¿Dónde es el refuerzo escolar?\nA: Es en el CEIP Antonio Ferrandis de la Coma, Valencia.\n\nQ: ¿Qué días es el refuerzo escolar?\nA: Lunes, martes, miércoles, jueves y viernes de 15:30 a 16:30.\n\nQ: ¿Cuánto dura el refuerzo escolar?\nA: De 15:30 a 16:30, es decir, una hora.\n\nQ: ¿Qué edad tienen los niños del refuerzo escolar?\nA: Los niños van desde los tres años hasta sexto de primaria. Hay dos grupos de Infantil y tres de primaria. Siempre divididos por edades.",
+          "score": 0.8616
+        },
+        {
+          "source": "01_faq_dni.txt",
+          "text": "Q: ¿Cómo vamos hasta la Coma para el refuerzo escolar?\nA: Organizamos coches desde Valencia o alrededores para que todos los voluntarios tengan modo de ir.\n\nQ: ¿Quién paga la gasolina del refuerzo escolar?\nA: De la gasolina se encarga la asociación.\n\nQ: ¿Necesito documentación para el refuerzo escolar?\nA: Sí, para empezar es indispensable tener el certificado de delitos sexuales en vigor, así como rellenar el seguro del voluntario.",
+          "score": 0.8607
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 870,
+        "output_tokens": 179,
+        "tokens_per_sec": 4.68,
+        "latencia_s": 38.26,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q5",
+    "pregunta": "¿Cuándo son las actividades con los abuelitos?",
+    "fuentes_esperadas": [
+      "11_horarios_ubicaciones.txt",
+      "16_resis_49_preguntas.txt"
+    ],
+    "categoria": "resis",
+    "salida": {
+      "respuesta": "Los miércoles, de 17:30 h a 18:30 h. (01_faq_dni.txt; 11_horarios_ubicaciones.txt)",
+      "fuentes": [
+        "10_proyectos.txt",
+        "01_faq_dni.txt",
+        "11_horarios_ubicaciones.txt",
+        "16_resis_49_preguntas.txt",
+        "06_coles_refuerzo.txt"
+      ],
+      "chunks": [
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿Qué hacemos con los abuelitos?",
+          "score": 0.9036
+        },
+        {
+          "source": "01_faq_dni.txt",
+          "text": "Q: ¿Qué días se hace la actividad con abuelitos?\nA: Los miércoles de 17:30 a 18:30.\n\nQ: ¿Qué se hace en la actividad con abuelitos?\nA: En este voluntariado vamos a pasar tiempo con los residentes de la Acollida. A través de distintas actividades buscamos llevarles la alegría de los jóvenes.\n\nQ: ¿Qué tipo de actividades se realizan con los abuelitos?\nA: Meriendas, paseos, juegos de mesa, excursiones y muchas más.",
+          "score": 0.8982
+        },
+        {
+          "source": "11_horarios_ubicaciones.txt",
+          "text": "### HORARIOS Y UBICACIONES ###\n\nQ: ¿Cuándo son las actividades con los abuelitos (RESIS)?\nA: Las actividades en la residencia L'Acollida se realizan todos los miércoles de 5:30 a 6:30 de la tarde (17:30-18:30h). La residencia está ubicada en la calle Crevillente 22, cerca de la Avenida Blasco Ibáñez en Valencia. Para confirmar detalles de la próxima sesión, consulta el grupo de WhatsApp o contacta al 962 025 978.",
+          "score": 0.8555
+        },
+        {
+          "source": "16_resis_49_preguntas.txt",
+          "text": "Q: ¿Solo se hacen actividades en la residencia o se hacen más cosas?\nA: Además de la actividad semanal, hay actividades puntuales (ej. ver Fallas, museos, conciertos).\n\nQ: ¿Qué tipo de condiciones tienen los residentes?\nA: Los voluntarios se enfocan en los abuelitos que mejor están de salud física y mental.\n\nQ: ¿Cuántos abuelitos tenemos que atender?\nA: Suelen asistir entre 10 y 15 abuelitos, aunque no todos participan activamente.",
+          "score": 0.8473
+        },
+        {
+          "source": "06_coles_refuerzo.txt",
+          "text": "Q: ¿Qué otras actividades con niños hace DNI?\nA: Además esta actividad semanal a lo largo del año hacemos otras actividades puntuales como Llegada de los Reyes en Navidad o como el Día del Niño en verano este último consiste en llevar a niños de centros de acogida a Terra Mítica a pasar un gran día.",
+          "score": 0.7986
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 825,
+        "output_tokens": 160,
+        "tokens_per_sec": 55.07,
+        "latencia_s": 2.91,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q6",
+    "pregunta": "¿Qué diferencia hay entre desayuno solidario y cena solidaria?",
+    "fuentes_esperadas": [
+      "15_desayunos_100_preguntas.txt"
+    ],
+    "categoria": "desayunos",
+    "salida": {
+      "respuesta": "La diferencia principal está en la hora y en los alimentos que se sirven:  \n\n- **Desayuno solidario**: se realiza por la mañana (generalmente entre 9:00 y 12:00 h) y se lleva café, zumos, bollería y algo de fruta.  \n- **Cena solidaria**: se lleva a cabo por la tarde/noche y se reparte bocadillos y fruta.  \n\n(Fuente: [15_desayunos_100_preguntas.txt])",
+      "fuentes": [
+        "10_proyectos.txt",
+        "15_desayunos_100_preguntas.txt",
+        "07_desayunos_logistica.txt",
+        "11_horarios_ubicaciones.txt"
+      ],
+      "chunks": [
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿Cómo funcionan los desayunos solidarios?",
+          "score": 0.8898
+        },
+        {
+          "source": "15_desayunos_100_preguntas.txt",
+          "text": "Q: ¿Cuántas veces puedo participar al mes?\nA: Las que quieras. No hay límite; muchos voluntarios vienen casi todas las semanas.\n\nQ: ¿Qué diferencia hay entre \"desayuno solidario\" y \"cena solidaria\"?\nA: La principal diferencia es la hora y el tipo de alimentos: en los desayunos llevamos café, zumos y bollería; en las cenas, bocadillos y fruta.\n\nQ: ¿Puedo elegir si quiero hacer desayuno o cena?\nA: Sí, cada semana puedes apuntarte al turno que prefieras según tu disponibilidad.",
+          "score": 0.8709
+        },
+        {
+          "source": "10_proyectos.txt",
+          "text": "Q: ¿Cómo funcionan los desayunos solidarios?\nA: Los desayunos solidarios se realizan casi todas las semanas en zona centro de Valencia. Preparamos bocadillos, café, zumo y algo de fruta, y vamos a zonas donde hay personas sin hogar. Lo más importante NO es solo dar comida, sino sentarnos a conversar con ellos, escucharles, conocer sus historias y hacerles sentir acompañados. Cada desayuno dura unas 2-3 horas. Es una experiencia transformadora que cambia tu perspectiva sobre la exclusión social.",
+          "score": 0.8472
+        },
+        {
+          "source": "07_desayunos_logistica.txt",
+          "text": "### LOGÍSTICA DETALLADA DESAYUNOS SOLIDARIOS ###\n\nQ: ¿Qué se hace en la actividad de desayunos solidarios?\nA: La actividad consiste en que un grupo de voluntarios se reúne en un punto de encuentro y se divide en equipos. Cada equipo recorre una zona de Valencia repartiendo desayunos o cenas a personas sin hogar. Lo más importante no es solo la comida, sino el tiempo que se comparte con ellos, ofreciéndoles conversación y compañía.",
+          "score": 0.8436
+        },
+        {
+          "source": "11_horarios_ubicaciones.txt",
+          "text": "Q: ¿A qué hora son los desayunos solidarios?\nA: Los desayunos solidarios suelen ser los fines de semana (sábados o domingos) por la mañana temprano, típicamente entre las 9:00-12:00h. La hora exacta varía según la zona donde vayamos y la coordinación con las personas sin hogar. Nos gusta madrugar un poco para llegar cuando la gente está despertando. Te avisaremos con antelación del punto de encuentro y hora exacta en el grupo de WhatsApp.",
+          "score": 0.8333
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 870,
+        "output_tokens": 269,
+        "tokens_per_sec": 9.06,
+        "latencia_s": 29.68,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q7",
+    "pregunta": "¿Cuánto cuesta el alquiler en Valencia?",
+    "fuentes_esperadas": [],
+    "categoria": "fuera_de_ambito",
+    "salida": {
+      "respuesta": "No tengo esa información en mis fuentes.",
+      "fuentes": [
+        "16_resis_49_preguntas.txt",
+        "06_coles_refuerzo.txt",
+        "02_presentacion_desayunos.txt",
+        "14_impacto_social.txt"
+      ],
+      "chunks": [
+        {
+          "source": "16_resis_49_preguntas.txt",
+          "text": "Q: ¿Cómo contacto con alguien de la asociación?\nA: La mejor manera es entrar en el grupo de WhatsApp. Escribe a alguno de los administradores y ellos te redirigirán o te resolverán la pregunta.\n\nQ: ¿Puedo contactar con algún voluntario que me cuente su experiencia?\nA: Claro que sí. Pídeselo a alguien de la asociación y te pasará el contacto de un voluntario o exvoluntario.\n\nQ: ¿Necesito algún tipo de formación para acudir?\nA: No, no es necesaria ninguna formación previa.",
+          "score": 0.7671
+        },
+        {
+          "source": "06_coles_refuerzo.txt",
+          "text": "Q: ¿Qué otras actividades con niños hace DNI?\nA: Además esta actividad semanal a lo largo del año hacemos otras actividades puntuales como Llegada de los Reyes en Navidad o como el Día del Niño en verano este último consiste en llevar a niños de centros de acogida a Terra Mítica a pasar un gran día.",
+          "score": 0.7445
+        },
+        {
+          "source": "02_presentacion_desayunos.txt",
+          "text": "4. Llevar este voluntariado fuera de la asociación: a partir de la concienciación de los voluntarios que estos traten de ayudar a estas personas siempre que puedan en el día a día. Prestando su ayuda o simplemente saludando con una sonrisa.",
+          "score": 0.7365
+        },
+        {
+          "source": "14_impacto_social.txt",
+          "text": "alegría de ver sonreír a alguien gracias a ti. Como dicen nuestros voluntarios: \"Vienes a ayudar y acabas siendo tú el ayudado\". ❤️",
+          "score": 0.7363
+        },
+        {
+          "source": "16_resis_49_preguntas.txt",
+          "text": "Q: ¿Qué tengo que hacer para dejar el voluntariado?\nA: Solo avisar con antelación al responsable para que puedan reorganizar el grupo.",
+          "score": 0.7332
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 721,
+        "output_tokens": 67,
+        "tokens_per_sec": 6.0,
+        "latencia_s": 11.17,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  },
+  {
+    "id": "q8",
+    "pregunta": "¿Cuál es la mejor universidad para estudiar medicina?",
+    "fuentes_esperadas": [],
+    "categoria": "fuera_de_ambito",
+    "salida": {
+      "respuesta": "No tengo esa información en mis fuentes.",
+      "fuentes": [
+        "15_desayunos_100_preguntas.txt",
+        "14_impacto_social.txt",
+        "08_preguntas_basicas.txt",
+        "10_proyectos.txt"
+      ],
+      "chunks": [
+        {
+          "source": "15_desayunos_100_preguntas.txt",
+          "text": "Q: ¿Puedo participar si tengo discapacidad o movilidad reducida?\nA: Sí, adaptamos el recorrido según las necesidades de cada voluntario. Escríbenos para coordinarlo.\n\nQ: ¿Puedo traer a mi mascota?\nA: Por respeto y seguridad hacia las personas a las que visitamos, preferimos que no se lleven animales durante el reparto.\n\nQ: ¿Puedo hacer prácticas universitarias con vosotros?\nA: En algunos casos sí. Escríbenos y vemos si tu universidad lo permite como actividad solidaria reconocida.",
+          "score": 0.6754
+        },
+        {
+          "source": "14_impacto_social.txt",
+          "text": "Q: ¿Cómo sé que mi ayuda realmente sirve?",
+          "score": 0.6554
+        },
+        {
+          "source": "15_desayunos_100_preguntas.txt",
+          "text": "Q: ¿Qué día es mejor para empezar si nunca he ido?\nA: Cualquiera. Cada sábado hay gente nueva, así que siempre te sentirás acompañado.\n\nQ: ¿Cuántos cafés o desayunos se reparten por salida?\nA: Entre 30 y 50, dependiendo del grupo y de la cantidad de personas en la calle ese día.\n\nQ: ¿Hay algún tipo de reconocimiento o diploma?\nA: Sí, si lo necesitas, podemos emitir un certificado de participación voluntaria.",
+          "score": 0.6429
+        },
+        {
+          "source": "08_preguntas_basicas.txt",
+          "text": "Q: ¿Dónde está ubicada DNI?\nA: DNI está ubicada en Valencia capital y tiene presencia en toda la Comunidad Valenciana. Nuestras actividades se realizan en diferentes puntos: desayunos solidarios en zona centro de Valencia, residencia L'Acollida para ancianos (RESIS) cerca de Blasco Ibáñez, y biblioteca para refuerzo escolar (COLES).",
+          "score": 0.6428
+        },
+        {
+          "source": "10_proyectos.txt",
+          "text": "A: El refuerzo escolar (COLES) es un programa tutorizado en biblioteca donde ayudamos a niños en riesgo de exclusión con sus deberes y estudios. Trabajamos en grupos pequeños o sesiones individuales, adaptándonos al nivel de cada niño. No solo ayudamos con matemáticas o lengua, sino que fomentamos su desarrollo integral: autoestima, hábitos de estudio, motivación. Requiere compromiso más regular (idealmente 1-2 veces/semana) para generar vínculo con los niños.",
+          "score": 0.6401
+        }
+      ],
+      "metricas": {
+        "prompt_tokens": 823,
+        "output_tokens": 83,
+        "tokens_per_sec": 32.04,
+        "latencia_s": 2.59,
+        "modelo": "poligpt"
+      },
+      "trazas": null,
+      "conversation_id": null
+    }
+  }
+]

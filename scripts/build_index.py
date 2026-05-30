@@ -3,7 +3,7 @@
 Ejecución desde la raíz del repo:
     python scripts/build_index.py
 
-Tiempo estimado: 30-90 s para el corpus GTI (depende del modelo de
+Tiempo estimado: 30-90 s para el corpus DNI (depende del modelo de
 embeddings y de la latencia con Ollama).
 """
 

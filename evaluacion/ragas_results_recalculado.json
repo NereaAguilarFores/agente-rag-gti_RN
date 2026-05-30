@@ -1,0 +1,282 @@
+{
+  "metodologia": "heuristica_reproducible_sobre_runs_crudos",
+  "runs_evaluados": [
+    {
+      "run": "benchmark\\runs\\run_20260530_161401.json",
+      "promedios": {
+        "faithfulness": 0.691,
+        "answer_relevancy": 0.661,
+        "context_precision": 0.602,
+        "context_recall": 1.0
+      },
+      "preguntas": [
+        {
+          "id": "q1",
+          "faithfulness": 0.5,
+          "answer_relevancy": 0.0,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q2",
+          "faithfulness": 0.57,
+          "answer_relevancy": 0.688,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q3",
+          "faithfulness": 0.691,
+          "answer_relevancy": 0.667,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q4",
+          "faithfulness": 0.629,
+          "answer_relevancy": 0.588,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q5",
+          "faithfulness": 0.556,
+          "answer_relevancy": 0.5,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q6",
+          "faithfulness": 0.583,
+          "answer_relevancy": 0.846,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q7",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q8",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        }
+      ],
+      "modelo": "llama3.2:3b",
+      "servidor": "ollama_local"
+    },
+    {
+      "run": "benchmark\\runs\\run_20260530_164511.json",
+      "promedios": {
+        "faithfulness": 0.706,
+        "answer_relevancy": 0.653,
+        "context_precision": 0.602,
+        "context_recall": 1.0
+      },
+      "preguntas": [
+        {
+          "id": "q1",
+          "faithfulness": 0.587,
+          "answer_relevancy": 0.136,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q2",
+          "faithfulness": 0.575,
+          "answer_relevancy": 0.562,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q3",
+          "faithfulness": 0.691,
+          "answer_relevancy": 0.524,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q4",
+          "faithfulness": 0.619,
+          "answer_relevancy": 0.412,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q5",
+          "faithfulness": 0.582,
+          "answer_relevancy": 0.9,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q6",
+          "faithfulness": 0.591,
+          "answer_relevancy": 0.692,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q7",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q8",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        }
+      ],
+      "modelo": "qwen2.5:3b",
+      "servidor": "ollama_local"
+    },
+    {
+      "run": "benchmark\\runs\\run_20260529_213841.json",
+      "promedios": {
+        "faithfulness": 0.691,
+        "answer_relevancy": 0.588,
+        "context_precision": 0.602,
+        "context_recall": 1.0
+      },
+      "preguntas": [
+        {
+          "id": "q1",
+          "faithfulness": 0.5,
+          "answer_relevancy": 0.0,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q2",
+          "faithfulness": 0.57,
+          "answer_relevancy": 0.75,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q3",
+          "faithfulness": 0.753,
+          "answer_relevancy": 0.81,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q4",
+          "faithfulness": 0.614,
+          "answer_relevancy": 0.529,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q5",
+          "faithfulness": 0.515,
+          "answer_relevancy": 0.0,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q6",
+          "faithfulness": 0.574,
+          "answer_relevancy": 0.615,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q7",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q8",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        }
+      ],
+      "modelo": "poligpt",
+      "servidor": "poligpt"
+    },
+    {
+      "run": "benchmark\\runs\\run_20260529_215142.json",
+      "promedios": {
+        "faithfulness": 0.716,
+        "answer_relevancy": 0.637,
+        "context_precision": 0.602,
+        "context_recall": 1.0
+      },
+      "preguntas": [
+        {
+          "id": "q1",
+          "faithfulness": 0.543,
+          "answer_relevancy": 0.091,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q2",
+          "faithfulness": 0.624,
+          "answer_relevancy": 0.625,
+          "context_precision": 0.667,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q3",
+          "faithfulness": 0.803,
+          "answer_relevancy": 0.857,
+          "context_precision": 0.6,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q4",
+          "faithfulness": 0.6,
+          "answer_relevancy": 0.529,
+          "context_precision": 0.5,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q5",
+          "faithfulness": 0.541,
+          "answer_relevancy": 0.3,
+          "context_precision": 0.4,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q6",
+          "faithfulness": 0.62,
+          "answer_relevancy": 0.692,
+          "context_precision": 0.25,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q7",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        },
+        {
+          "id": "q8",
+          "faithfulness": 1.0,
+          "answer_relevancy": 1.0,
+          "context_precision": 1.0,
+          "context_recall": 1.0
+        }
+      ],
+      "modelo": "qwen",
+      "servidor": "poligpt"
+    }
+  ],
+  "runs_no_encontrados": []
+}
