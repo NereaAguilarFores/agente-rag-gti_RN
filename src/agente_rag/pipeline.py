@@ -5,7 +5,7 @@ y ``api.py`` lo compartan sin duplicar código.
 
 La salida cumple el contrato del enunciado §9 con todos los campos opcionales
 poblados (banda 7). El campo ``trazas`` queda en ``None`` porque no es
-obligatorio y este repo-ejemplo no lo necesita.
+obligatorio en esta entrega.
 """
 
 from __future__ import annotations

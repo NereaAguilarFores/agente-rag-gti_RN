@@ -1,100 +1,102 @@
-# Decisiones de arquitectura
+# Arquitectura y decisiones tecnicas
 
-> Documento corto que explica el **por qué** detrás de cada elección.
-> No describe **qué** hace cada fichero (eso lo cuenta el código y el
-> README). Aquí va lo que un alumno no puede deducir leyendo el árbol.
+## Arquitectura elegida
 
-## 1. Por qué single-agent y no hexagonal
+El proyecto usa una arquitectura single-agent modular. No es una arquitectura hexagonal completa, pero separa las responsabilidades principales del sistema RAG en modulos independientes:
 
-Este repo es **plantilla pedagógica**, no aspirante a banda 10. Si os
-diéramos la versión hexagonal terminada, regalaríamos los puntos del
-techo. El propio enunciado §13 deja el 10 como ejercicio del alumno.
+- `chunker.py`: carga y trocea los documentos del corpus.
+- `embedder.py`: genera embeddings.
+- `retriever.py`: consulta ChromaDB y devuelve chunks relevantes.
+- `prompts.py`: construye el prompt final.
+- `generator.py`: llama al modelo generador.
+- `pipeline.py`: orquesta el flujo completo de consulta.
 
-A cambio, este repo deja **muy claro qué refactorizar**:
+Esta decision permite mantener el proyecto sencillo y compatible con el contrato de la practica, sin asumir el coste de reestructuracion necesario para Banda 10.
 
-- `src/agente_rag/embedder.py`, `retriever.py`, `generator.py` ya están
-  separados como módulos — son los **futuros adapters**.
-- `src/agente_rag/pipeline.py` es el **futuro `domain/chatbot_service.py`**.
-- `src/agente_rag/config.py` es la **semilla del composition root**.
+## Flujo de indexacion
 
-La diferencia con un hexagonal real está en las dependencias: ahora
-`pipeline.py` *importa* `retriever` y `generator` directamente (acoplamiento
-hacia adapters concretos). En hexagonal, `pipeline.py` recibiría dos
-**ports** por constructor y no sabría si detrás hay Ollama o un fake.
+1. `scripts/build_index.py` carga los documentos de `corpus/`.
+2. `chunker.load_corpus` lee los `.txt`.
+3. `chunker.split_documents` divide los textos en chunks.
+4. `retriever.build_index` calcula embeddings y los guarda en ChromaDB.
+5. El indice se persiste en disco para no recalcularlo en cada consulta.
 
-## 2. Por qué ChromaDB persistente y no in-memory como el Colab
+## Flujo de consulta
 
-El Colab usa `chromadb.Client()` (in-memory) porque cada celda se ejecuta en
-una sesión efímera. En vuestro repo el examinador clona, indexa **una vez**,
-y luego hace múltiples preguntas. Reembedar 4 × 27 chunks cada vez son ~30 s
-extra que **se pagan en la oral** delante del profesor. Con
-`PersistentClient(path=...)` el segundo arranque cae a < 2 s.
+1. El corrector o usuario llama a `consultar(pregunta)`.
+2. `pipeline.answer` recibe la pregunta.
+3. `retriever.retrieve` recupera los chunks mas similares.
+4. `prompts.build_prompt` crea un prompt con reglas anti-alucinacion.
+5. `generator.generate` llama al LLM configurado.
+6. El sistema devuelve respuesta, fuentes, chunks, metricas y trazas.
 
-Coste: el directorio `data/chroma/` está en `.gitignore`. **Hay que regenerarlo**
-en cada portátil — ese es justo el comando que probaréis en el oral
-(`python scripts/build_index.py`).
+## Chunking
 
-## 3. Por qué `nomic-embed-text` y no sentence-transformers
+Se usa `RecursiveCharacterTextSplitter` con:
 
-`nomic-embed-text` viene en el catálogo de Ollama UPV → un único endpoint
-para LLM y embeddings. Una sola dependencia (`requests`), un solo timeout
-para configurar, un solo error para diagnosticar.
+- `chunk_size=500`.
+- `chunk_overlap=100`.
 
-`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` es alternativa
-válida y **funciona sin red** (descarga el modelo una vez). Lo dejamos
-documentado en `manual_desarrollador.pdf §1.2` como opción si Ollama UPV
-está caído.
+Esta configuracion busca equilibrar:
 
-## 4. Por qué chunk_size=500 / overlap=100
+- contexto suficiente para responder preguntas complejas;
+- prompts no excesivamente largos;
+- trazabilidad clara al archivo origen.
 
-Es el "sweet spot" del Colab §3 para texto en español:
+Los nombres de archivo se conservan como metadatos para poder citar fuentes en la respuesta final.
 
-- 100: pierde contexto, recupera trozos inconexos.
-- 2000: el embedding se diluye y el prompt se infla.
-- 500/100: un chunk típico es un párrafo o medio. Suficiente para que el
-  retrieval semántico distinga "Inteligencia Artificial" de "Visión Artificial"
-  por contexto, no por nombre.
+## Vector store
 
-Si vuestro retrieval falla, **lo primero a tocar son estos dos números**.
+Se usa ChromaDB persistente. La persistencia evita recalcular embeddings cada vez que se ejecuta el agente y mejora la experiencia durante la defensa oral.
 
-## 5. Por qué `score = 1 - distance` en `retriever.py`
+La coleccion usa similitud coseno. Internamente ChromaDB devuelve distancias, y el sistema las transforma en `score = 1 - distance` para que valores mas altos indiquen mayor similitud.
 
-ChromaDB devuelve **distancias** (más bajo = más cercano). El contrato del
-enunciado y el lenguaje natural del informe esperan **scores** (más alto =
-mejor match). Hacemos la conversión una sola vez en el adapter para que el
-dominio razone siempre en "score" y no en "distance".
+## Prompt anti-alucinacion
 
-## 6. Por qué `verify_ssl=False` SOLO contra UPV
+El prompt obliga al modelo a:
 
-El endpoint Ollama UPV usa cert autofirmado: con `verify=True` falla la
-handshake. Con `verify=False` el handshake pasa pero **se desactivan las
-comprobaciones de identidad** — cualquier MITM en la red podría suplantar
-el endpoint. Es asumible **dentro de la red UPV**, no en general. Por eso
-el default en `.env.example` es `VERIFY_SSL=true` y solo se baja en el
-caso documentado.
+- responder solo con informacion del contexto;
+- rechazar preguntas fuera de ambito;
+- citar siempre el archivo fuente;
+- no inventar datos numericos;
+- no inventar significados de siglas;
+- tratar RESIS y COLES segun lo que aparece en el corpus.
 
-## 7. Por qué los tests no llaman a Ollama
+Durante las pruebas se reforzaron reglas especificas para evitar errores detectados en comparativas y siglas.
 
-Tres razones:
+## Modelos
 
-1. **Reproducibilidad**: el CI no tiene acceso a Ollama. Si los tests
-   dependieran de la red, romperían en cada PR.
-2. **Velocidad**: un test que llama al LLM tarda 1-2 s. Con 50 tests, son
-   minutos. Con stubs, son milisegundos.
-3. **Cobertura del contrato sin coste de tokens**: lo importante es
-   verificar la **forma** del JSON de salida, no el contenido.
+El sistema puede usar:
 
-La validación E2E con Ollama real **se hace a mano**: `python scripts/run_eval.py`
-+ leer los outputs en `benchmark/runs/`. Eso es lo que el alumno presentará
-en el informe.
+- Ollama local, obligatorio para cumplir el minimo de la practica.
+- PoliGPT UPV, usado para comparacion en benchmark.
 
-## 8. Decisiones que NO tomamos a propósito
+El backend se selecciona con variables de entorno. La logica del pipeline se mantiene igual para comparar modelos de forma justa.
 
-- **No incluimos retrieval híbrido (BM25 + semántico)**. Está en
-  `requirements.txt` (`rank-bm25`) pero no se usa. Es el primer extra
-  natural para subir nota: añadir `bm25.py` y mezclar scores.
-- **No incluimos memoria conversacional**. El contrato acepta
-  `conversation_id` pero el pipeline no la usa. Otro extra abierto.
-- **No incluimos frontend**. El extra "frontend +1.5" se hace encima de
-  este repo, no dentro: añadid un `streamlit_app.py` que llame a
-  `consultar.consultar(...)`.
+## Metricas
+
+Cada respuesta incluye:
+
+- tokens de entrada;
+- tokens de salida;
+- tokens por segundo;
+- latencia;
+- modelo usado.
+
+Estas metricas permiten comparar rendimiento entre modelos en el benchmark.
+
+## Limitaciones
+
+- No hay arquitectura hexagonal con ports y adapters.
+- No se implementa retrieval hibrido BM25 + semantico.
+- No hay re-ranking.
+- No hay memoria conversacional real, aunque el contrato acepta `conversation_id`.
+- Los resultados RAGAs de Banda 8 no estan incorporados en el repositorio actual.
+
+## Mejoras futuras
+
+- Migrar a arquitectura hexagonal si se aspira a Banda 10.
+- Anadir BM25 o re-ranking para mejorar recuperacion.
+- Agrupar mejor pares `Q:/A:` antes del chunking.
+- Incorporar RAGAs y metricas propias si se quiere defender Banda 8.
+- Crear un frontend sencillo con Streamlit o Gradio como extra.

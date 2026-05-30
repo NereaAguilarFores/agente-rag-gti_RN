@@ -20,7 +20,7 @@ Y la salida debe tener exactamente estas claves (algunas opcionales):
   "respuesta": "string — texto de la respuesta",
   "fuentes": ["lista", "de", "nombres", "de", "archivo"],
   "chunks": [
-    {"source": "1_primero.txt", "text": "...", "score": 0.84}
+    {"source": "07_desayunos_logistica.txt", "text": "...", "score": 0.84}
   ],
   "metricas": {
     "prompt_tokens": 612,

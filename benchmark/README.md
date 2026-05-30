@@ -1,55 +1,78 @@
-# Benchmark — set de preguntas tipo
+# Benchmark
 
-Set reducido de **8 preguntas** para validar el agente sobre el corpus
-GTI Orienta. Cubre cuatro categorías:
+Esta carpeta recoge el benchmark usado para comparar el agente RAG de DNI Valencia con cuatro modelos distintos.
 
-Se ha realizado un benchmark comparativo con cuatro modelos (llama3.2:3b, qwen2.5:3b, poligpt y qwen) registrando latencia, tokens y calidad de respuesta.
+## Objetivo
 
-| Categoría | Cuántas | Para qué |
+El benchmark valida:
+
+- Calidad factual de las respuestas.
+- Capacidad de citar fuentes del corpus.
+- Comportamiento anti-alucinacion ante preguntas fuera de ambito.
+- Latencia y velocidad de generacion.
+- Diferencias entre modelos locales y modelos PoliGPT.
+
+## Archivos
+
+- `preguntas.json`: conjunto fijo de preguntas.
+- `benchmark.json`: resumen estructurado de modelos evaluados y rutas de resultados.
+- `benchmark.md`: resultados narrativos y conclusiones por modelo.
+- `benchmark_resultados.md`: copia de trabajo con el analisis completo.
+
+Nota: `benchmark.json` referencia ficheros `runs/run_*.json`. Si esos ficheros existen fuera del repositorio, deben incorporarse antes de entregar o actualizarse las referencias para que apunten a archivos presentes.
+
+## Preguntas
+
+El set actual contiene 8 preguntas:
+
+- Preguntas generales sobre DNI.
+- Preguntas sobre desayunos solidarios.
+- Preguntas comparativas entre RESIS y COLES.
+- Preguntas sobre refuerzo escolar y residencias.
+- Dos preguntas fuera de ambito que deben rechazarse.
+
+## Modelos comparados
+
+| Modelo | Entorno | Observacion principal |
 |---|---|---|
-| `asignaturas` | 3 | Pregunta directa por temario. Retrieval semántico debería acertar. |
-| `primer_curso` | 1 | Pregunta acotada a un único documento. Útil para detectar si el chunking pierde contexto. |
-| `consejo` | 1 | Pregunta abierta que requiere combinar varios cursos. |
-| `trampa_retrieval` | 1 | El retrieval semántico se distrae (ver Colab §10). Aquí brillaría un retrieval híbrido (BM25 + semántico). |
-| `fuera_de_ambito` | 2 | Deben rechazarse con la frase literal `No tengo esa información en mis fuentes`. |
+| `llama3.2:3b` | Ollama local | Rapido y suficiente para preguntas directas; mas limitado en sintesis compleja. |
+| `qwen2.5:3b` | Ollama local | Buen equilibrio entre velocidad, respuesta en espanol y sintesis. |
+| `poligpt` | PoliGPT UPV | Respuestas mas completas y estructuradas, con mayor latencia. |
+| `qwen` | PoliGPT UPV | Buena calidad en comparativas, pero respuestas largas y latencia elevada. |
 
-> **Nota pedagógica.** Este set es un *ejemplo* deliberadamente pequeño.
-> Para banda 7 hace falta un benchmark contra **4 modelos distintos**
-> (2 PoliGPT + 2 locales). Este repo no lo trae porque es trabajo del alumno.
+## Metricas registradas
 
-## Ejecutar
+Cada ejecucion del agente devuelve:
+
+- `prompt_tokens`.
+- `output_tokens`.
+- `tokens_per_sec`.
+- `latencia_s`.
+- `modelo`.
+- fuentes recuperadas.
+- chunks usados.
+- respuesta generada.
+
+Ademas, se realizo una valoracion cualitativa de acierto, rechazo correcto y problemas observados.
+
+## Ejecucion
 
 ```bash
 python scripts/run_eval.py
 ```
 
-Salida en `benchmark/runs/run_<timestamp>.json`. Cada entrada incluye
-respuesta, chunks recuperados, fuentes y métricas (`prompt_tokens`,
-`output_tokens`, `tokens_per_sec`, `latencia_s`).
+El script genera un archivo JSON dentro de `benchmark/runs/` con timestamp. Para que la entrega sea reproducible, conviene conservar esos JSON o ajustar `benchmark.json` a las rutas existentes.
 
-## Cómo evaluar los resultados
+## Resultados
 
-1. **Acierto factual**: ¿la respuesta es correcta según el corpus?
-2. **Cita correcta**: ¿la fuente declarada en `fuentes` contiene
-   realmente la información (banda 6)? Cruzad con `chunks[].text`.
-3. **No-alucinación**: las preguntas `fuera_de_ambito` deben devolver
-   la frase literal de rechazo.
-4. **Latencia**: cualquier `latencia_s > 30` baja a banda 5.
-5. **Tokens/segundo**: para comparar modelos.
+El analisis completo esta en:
 
-Para banda 8 podéis automatizar (1) y (3) con
-[RAGAs](https://docs.ragas.io/) — `faithfulness` y `answer_relevancy` son
-los dos más útiles para un set tan pequeño.
+- `benchmark.md`
+- `benchmark_resultados.md`
 
-## Resultados obtenidos
+Conclusion resumida:
 
-Los resultados completos del benchmark pueden consultarse en:
-
-- benchmark.md
-- benchmark.json
-
-Se evaluaron los modelos:
-- llama3.2:3b
-- qwen2.5:3b
-- poligpt
-- qwen
+- PoliGPT ofrece mejor sintesis, pero con mas coste temporal.
+- `qwen2.5:3b` es la opcion local mas equilibrada.
+- El control anti-alucinacion funciona bien en preguntas fuera de ambito.
+- Persisten rechazos innecesarios en alguna pregunta general como "Que es DNI?".

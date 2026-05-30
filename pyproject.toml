@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agente-rag-gti"
 version = "0.1.0"
-description = "Repo-ejemplo de la práctica del Asistente DNI (Inteligencia Artificial, 3º GTI, UPV). Caso paralelo: GTI Orienta."
+description = "Agente RAG para responder preguntas sobre DNI Valencia en la práctica de Inteligencia Artificial."
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
