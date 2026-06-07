@@ -24,7 +24,14 @@ El fichero [features.json](features.json) declara las bandas que se entregan rea
 - Al menos un modelo local para consultas, por ejemplo `llama3.2:3b` o `qwen2.5:3b`.
 - Para benchmark con PoliGPT: clave de API y VPN/red UPV cuando sea necesario.
 
-Instalacion recomendada:
+## Clonar el repositorio
+
+```bash
+git clone https://github.com/NereaAguilarFores/agente-rag-gti_RN
+cd agente-rag-gti_RN
+```
+
+## Instalación
 
 ```bash
 python -m venv .venv
